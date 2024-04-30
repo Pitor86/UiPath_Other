@@ -1,0 +1,281 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="EdgeSetGender" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="strTargetGenderChoose" Type="InArgument(x:String)" />
+    <x:Property Name="strTargetGenderPercent" Type="InArgument(x:String)" />
+    <x:Property Name="uiEdge" Type="InArgument(ui:UiElement)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>716.8,945.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Edge Set Gender - Dispatcher" sap:VirtualizedContainerService.HintSize="545.6,880.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strCurrentPercent" />
+      <Variable x:TypeArguments="x:String" Name="strDynamicGenderSelector" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - 15" sap:VirtualizedContainerService.HintSize="483.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Start - Edge Set Gender - Dispatcher&quot;]" />
+    <Assign DisplayName="Assign - strDynamicGenderSelector" sap:VirtualizedContainerService.HintSize="483.2,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strDynamicGenderSelector]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(strTargetGenderChoose = "Female", "gender-female", "gender-male")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Set focus on browser." AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge - Advanced Screen" sap:VirtualizedContainerService.HintSize="483.2,282.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[uiEdge]" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="31463f7d-f033-45ea-8637-e3e1b6f134ba" Timeout="[dictTimeoutType_Value(&quot;Delay4&quot;)]" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence sap2010:Annotation.AnnotationText="Set target gender percentage." DisplayName="Set Gender - Advanced Screen" sap:VirtualizedContainerService.HintSize="449.6,114.4" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" CursorMotionType="Instant" DisplayName="Click - Sidebar" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="31463f7d-f033-45ea-8637-e3e1b6f134ba" Timeout="[dictTimeoutType_Value(&quot;Delay4&quot;)]" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/advanced.php" DesignTimeRectangle="667, 592, 23, 23" DesignTimeScaleFactor="1.25" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' type='' class='ui-slider-handle ui-state-default ui-corner-all' aaname='' /&gt;" Guid="5b5a5ee8-7977-47eb-913a-5337105fb4ff" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFWSURBVEhL7ZbBioJQFIZ7hSRwEbQIEWrjziQI3KhPk7UR0a2baGeLep/cCr5HiW8g/3DsWjbjXWi3Zhbzw7c8/3dVuJ4BPpjflV0uF8RxjCAI4Pt+Z2jucDjger2yxkeeZEmSwHVdWJaF1WqFxWLRGZqzbRubzQbn85k133KX0RORqK2gL9vtFnmeM0NDdjweqxO1DfXFcRycTidmaMjCMOz96nhQH/XWGaRpCoI+btvAq1Bv7RiUZQninbLa8S/rzd+QKYoiHK5sOBwKhyuTJEk4XNloNBIOVybLsnC4svF4LByubDKZCKdVRrfzbDbDdDoVxnw+r3rvsvpG3u12MAwDqqoKY7lcYr/fP2599qupdgb6U9NpREGrQVEUzPBtB6GdYb1ewzRN6LoOTdM6Q3M0TwfPsow13/Iko9DOEEURPM+rPm5XaI7mm09U54fsnfmgDPgCA/Wo7vCBgUEAAAAASUVORK5CYII=" InformativeScreenshot="00c0a55eeac8c7b57e6ab3d32932d797.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="492, 527, 67, 17" CvTextArgument="Gender" CvType="Text" DesignTimeRectangle="494, 568, 344, 22" ElementType="Text" FriendlyName="'Gender'" FullSelectorArgument="&lt;webctrl idx='2' tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='P' class='' aaname='Gender' check:innerText='Gender' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAVwAAAAaCAYAAAD7YOTpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAOzSURBVHhe7dzPa9pgAMbx/a8ihEEQwkBGc5jIRPCSSxCklI55aCi0hwrDMoTKKF4CRSjCEEZGaSnCyCUgAXn2xrxJ3vijtrBGyp4PvAdf30RPX9I3qe9ARESFYHCJiArC4BIRFYTBJSIqCINLRFQQBpeIqCAMLhFRQd5YcO/ROyihVIqGid6DnCYiegO2Btf/NUS3acJ4nwRODE2HUbfgXE3hh3JhoRhcInq71oO7mGFoG1lkt42Dnshf0RhcInq7VoIbwG3rWVTLBuzLKWbz+N0w8OCetmCUGVwiopfKB/f2GHoS25IO2w3kG3nh7z5aLSW4Cx/eVReNAx2aPF6rmGh8HWG2kGvgwk7PbcMNpui3TWhRvEsajKaD8crH+TcOGlUtPkbTUWsfw/qQnCMf3PDRRa9dy7ZAyuKcdRv9n8pJXVseK0bbFceMcFyPv7PtyjVERK8kF9zJF+Xqtt6HL+eftBBXnXUZxU3jUxJmNbgaNE1Zk4zmIP3M+2+1NN6bRxbcwO3EV90b1+no3MgNZzW4FSN3DINLRK9NCa7653oJxslUzj/t/sJMj6mdTOBHV7ThDAMri7d1HQVPDe620cAgKu58BEuJYe3cQ7g8rwfnYzIvgzsX59XlXMXC8DGOqz/pwpTHl6oOvGhSDe7KYHCJ6LVtDa55kWwY5OfTsdzDncJJ/8S3MUq3DwQ1bofjaEIJronurY8ojeGfgRLXOKLhD0u+FiOJ5dL6Hq66tnqu7iqra2voPYop9Tt9PsN0tpdHLYjoP/WMK9yngvucq1Yx7JE4j7rWFq8S6xFVr5qjvdbMjrVbRxVnd+LwlT1cIqIi5fZwx4dKpDbt4arBeklw19YWHVy5ZcDgEtEe5YKL8Y6nFNaCq24pWBjKx8c2e35w/e8N+VoM5UbaprXqlsLOfWcGl4j2KB9cBBhaSdDEKBtonbrwgg13+ZfBBbzTajqnt3qYpPuiIYLHKYZHJmrL/eDnBxcPveyGl5jrTuLkhncDWMkNsmSteoOtXEXn2kPydTEP4LkOWkYn/jwGl4j2aCW4Quih31IeD9s2ZHB3PhYmRnwD7gXBFbEeH+76DsnaXY+FRUN+HoNLRHu0HtylEP5tH52V31LQKgbMpg3ncpJd9S6FmF07sOqG/EcGud4w0bAdDO+itS8JrrCYYXRUg548rxtdbV+OcLZpbcSfoH/YgFlR4i9/+6F7MYm3JRhcItqjLcElIqJ/jcElIioIg0tEVBAGl4ioIAwuEVEhgL/CZ/GXZvBW2gAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NGetText DisplayName="Get Text - strCurrentPercent" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="31463f7d-f033-45ea-8637-e3e1b6f134ba" TextString="[strCurrentPercent]" Timeout="[dictTimeoutType_Value(&quot;Delay4&quot;)]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/advanced.php" CvTextArea="792, 626, 46, 17" CvType="AnyWordGroup" DesignTimeRectangle="795, 625, 43, 22" DesignTimeScaleFactor="1.25" ElementType="Text" FriendlyName="'50%'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='{0}' tag='SPAN' /&gt;&quot;, strDynamicGenderSelector)]" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl id='{0}' tag='SPAN' type='' class='' /&gt;&quot;, strDynamicGenderSelector)]" Guid="1e6afb11-23ee-4167-826e-f90cc683f83c" ImageBase64="" InformativeScreenshot="46e33aa71d7372fdceb21a9051d81f50.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="667, 592, 23, 23" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' type='' class='ui-slider-handle ui-state-default ui-corner-all' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFWSURBVEhL7Za9joJAFIV9BQ2JhQkFIRQ0dBpITIwJ+jSIjSHSQmHsoMD3kZaC5xDDG5CzuTj4k2UK2NHdYk/ylfd8M0wywwAfzO/KLpcLoijCfr+H53mdobk4jlEUBWt85EWWpik2mw1s28Z8PsdsNusMza1WK7iui/P5zJpvuctoRyRqK+jLdrvF9XplhidZkiT1itqG+rJer3E6nZjhSeb7fu9Px4P6qLfJIMsyEHS4bQM/hXobx6CqKhDvlDWOf1lv/oZMVVXhcGXD4VA4XNloNBIOVyZJknC4svF4LByubDKZCIcrk2VZOK0yup11XYeiKMKgPuq9y5ob+XA4wDRNaJomDMuycDweH7c+e2rqF5WeclqNKOilLsuSGVr+QRzHwXK5xHQ6hWEYnaG5xWJRLzzPc9Z8y4uMQjsMwxC73a4+3K7QXBAELztq8k32znxQBnwBQEypDxL5ukcAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <If sap2010:Annotation.AnnotationText="Is target gender percenatge not equal to current?" Condition="[strCurrentPercent &lt;&gt; (strTargetGenderPercent + &quot;%&quot;)]" DisplayName="If - strCurrentPercent &lt;&gt; (strTargetGenderPercent + &quot;%&quot;)" sap:VirtualizedContainerService.HintSize="387.2,96.8" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="300,186.4" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop to set target gender percentage." Condition="[strCurrentPercent &lt;&gt; (strTargetGenderPercent + &quot;%&quot;)]" DisplayName="Do While - strCurrentPercent &lt;&gt; (strTargetGenderPercent + &quot;%&quot;)" sap:VirtualizedContainerService.HintSize="256.8,96.8" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1" MaxIterations="100">
+                    <ui:InterruptibleDoWhile.Body>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376.8,371.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Is target gender Female?" Condition="[strTargetGenderChoose = &quot;Female&quot;]" DisplayName="If - strTargetGenderChoose = &quot;Female&quot;" sap:VirtualizedContainerService.HintSize="333.6,84" sap2010:WorkflowViewState.IdRef="If_2">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376.8,288.8" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts - Right" sap:VirtualizedContainerService.HintSize="333.6,199.2" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" InteractionMode="DebuggerApi" ScopeIdentifier="31463f7d-f033-45ea-8637-e3e1b6f134ba" Shortcuts="[d(hk)][k(right)][u(hk)]" Timeout="[dictTimeoutType_Value(&quot;Delay2&quot;)]" Version="V3">
+                                <uix:NKeyboardShortcuts.Target>
+                                  <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/advanced.php" DesignTimeRectangle="519, 597, 319, 15" DesignTimeScaleFactor="1.25" FriendlyName="'DIV slider'" FullSelectorArgument="&lt;webctrl id='slider' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='slider' tag='DIV' type='' class='ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all' aaname='' /&gt;" Guid="675ef0a4-f6b3-46c3-86ed-938ed2ea19bf" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAUMAAAATCAYAAAAKym9EAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAH9SURBVHhe7dzPqmlxGIfxcwt2ykDtgaSYmCGljLgaDJUrkAvgfozVxpwbUP4M/JnoPX0dS+ec/dsn7HeVU8+3PjNrrdmTheWHMRbDhsOhNRoNK5fLbprNpo1Go+sVGPMdMWSxrNfrWa1WC0btWTqfzstYHPsUw+PxaMvl0qbTqU0mE+Ap3W43GLTv0nlD1wPuoa6pb+rc3/sjhvv93ubzue12OzudTnY+n4GnxBnD0PWAe6hr6ttsNrPD4XAt36/dYqhSKoShEwCPIoZ4dQqi4hjtFsPFYnEpZugg4FHEEK9uu91ebpmj3WKoe2lujeGFGOLVqXfqXrRbDPXhYugA4BnEEP8DdS8aMUQsFK1sNuuOGMITMUTsFK1EIuGOGMITMUTsFK23tzd3xBCeiCFip2glk0l3xBCegjHk22R4UrRSqZQ7YggvX36brN/b6Hc3oYOARyla6XTaHTGEl81mE/6dIU+gwJOi9f7+7o4YwsuXT6BoejZZL+DZZHyX/l0mn89bJpNxUygULucNXQ+4h7qmO+B/PpscTS/WW0e9WB8uAs/o9/tWqVQsl8u5qVarNhgMgtcD7hH9a83v7wijfYohYx5brVbWbrcv7+a8dDodW6/X1ysw5jtiyGLbeDy2Vqtl9XrdSqWSFYvFh+k4Ha+wfnx8XM/MmPfMfgLBdq5QrJFSQwAAAABJRU5ErkJggg==" InformativeScreenshot="15f5778fcbfd9c60f787420a7fe88764.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" WaitForReadyArgument="None">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                        <uix:Target DesignTimeRectangle="667, 592, 23, 23" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' type='' class='ui-slider-handle ui-state-default ui-corner-all' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFWSURBVEhL7ZbBioJQFIZ7hSRwEbQIEWrjziQI3KhPk7UR0a2baGeLep/cCr5HiW8g/3DsWjbjXWi3Zhbzw7c8/3dVuJ4BPpjflV0uF8RxjCAI4Pt+Z2jucDjger2yxkeeZEmSwHVdWJaF1WqFxWLRGZqzbRubzQbn85k133KX0RORqK2gL9vtFnmeM0NDdjweqxO1DfXFcRycTidmaMjCMOz96nhQH/XWGaRpCoI+btvAq1Bv7RiUZQninbLa8S/rzd+QKYoiHK5sOBwKhyuTJEk4XNloNBIOVybLsnC4svF4LByubDKZCKdVRrfzbDbDdDoVxnw+r3rvsvpG3u12MAwDqqoKY7lcYr/fP2599qupdgb6U9NpREGrQVEUzPBtB6GdYb1ewzRN6LoOTdM6Q3M0TwfPsow13/Iko9DOEEURPM+rPm5XaI7mm09U54fsnfmgDPgCA/Wo7vCBgUEAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector, Image" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NKeyboardShortcuts.Target>
+                              </uix:NKeyboardShortcuts>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376.8,288.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts - Left" sap:VirtualizedContainerService.HintSize="333.6,199.2" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" InteractionMode="DebuggerApi" ScopeIdentifier="31463f7d-f033-45ea-8637-e3e1b6f134ba" Shortcuts="[d(hk)][k(left)][u(hk)]" Timeout="[dictTimeoutType_Value(&quot;Delay2&quot;)]" Version="V3">
+                                <uix:NKeyboardShortcuts.Target>
+                                  <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/advanced.php" DesignTimeRectangle="519, 597, 319, 15" DesignTimeScaleFactor="1.25" FriendlyName="'DIV slider'" FullSelectorArgument="&lt;webctrl id='slider' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='slider' tag='DIV' type='' class='ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all' aaname='' /&gt;" Guid="0cab3014-d977-41f7-b1fe-f073d2c3c7a8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAUMAAAATCAYAAAAKym9EAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAH9SURBVHhe7dzPqmlxGIfxcwt2ykDtgaSYmCGljLgaDJUrkAvgfozVxpwbUP4M/JnoPX0dS+ec/dsn7HeVU8+3PjNrrdmTheWHMRbDhsOhNRoNK5fLbprNpo1Go+sVGPMdMWSxrNfrWa1WC0btWTqfzstYHPsUw+PxaMvl0qbTqU0mE+Ap3W43GLTv0nlD1wPuoa6pb+rc3/sjhvv93ubzue12OzudTnY+n4GnxBnD0PWAe6hr6ttsNrPD4XAt36/dYqhSKoShEwCPIoZ4dQqi4hjtFsPFYnEpZugg4FHEEK9uu91ebpmj3WKoe2lujeGFGOLVqXfqXrRbDPXhYugA4BnEEP8DdS8aMUQsFK1sNuuOGMITMUTsFK1EIuGOGMITMUTsFK23tzd3xBCeiCFip2glk0l3xBCegjHk22R4UrRSqZQ7YggvX36brN/b6Hc3oYOARyla6XTaHTGEl81mE/6dIU+gwJOi9f7+7o4YwsuXT6BoejZZL+DZZHyX/l0mn89bJpNxUygULucNXQ+4h7qmO+B/PpscTS/WW0e9WB8uAs/o9/tWqVQsl8u5qVarNhgMgtcD7hH9a83v7wijfYohYx5brVbWbrcv7+a8dDodW6/X1ysw5jtiyGLbeDy2Vqtl9XrdSqWSFYvFh+k4Ha+wfnx8XM/MmPfMfgLBdq5QrJFSQwAAAABJRU5ErkJggg==" InformativeScreenshot="15f5778fcbfd9c60f787420a7fe88764.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" WaitForReadyArgument="None">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                        <uix:Target DesignTimeRectangle="667, 592, 23, 23" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' type='' class='ui-slider-handle ui-state-default ui-corner-all' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFWSURBVEhL7ZbBioJQFIZ7hSRwEbQIEWrjziQI3KhPk7UR0a2baGeLep/cCr5HiW8g/3DsWjbjXWi3Zhbzw7c8/3dVuJ4BPpjflV0uF8RxjCAI4Pt+Z2jucDjger2yxkeeZEmSwHVdWJaF1WqFxWLRGZqzbRubzQbn85k133KX0RORqK2gL9vtFnmeM0NDdjweqxO1DfXFcRycTidmaMjCMOz96nhQH/XWGaRpCoI+btvAq1Bv7RiUZQninbLa8S/rzd+QKYoiHK5sOBwKhyuTJEk4XNloNBIOVybLsnC4svF4LByubDKZCKdVRrfzbDbDdDoVxnw+r3rvsvpG3u12MAwDqqoKY7lcYr/fP2599qupdgb6U9NpREGrQVEUzPBtB6GdYb1ewzRN6LoOTdM6Q3M0TwfPsow13/Iko9DOEEURPM+rPm5XaI7mm09U54fsnfmgDPgCA/Wo7vCBgUEAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector, Image" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NKeyboardShortcuts.Target>
+                              </uix:NKeyboardShortcuts>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                        <uix:NGetText DisplayName="Get Text - strCurrentPercent - After Change" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="31463f7d-f033-45ea-8637-e3e1b6f134ba" TextString="[strCurrentPercent]" Timeout="[dictTimeoutType_Value(&quot;Delay4&quot;)]" Version="V3">
+                          <uix:NGetText.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/advanced.php" CvTextArea="792, 626, 46, 17" CvType="AnyWordGroup" DesignTimeRectangle="795, 625, 43, 22" DesignTimeScaleFactor="1.25" ElementType="Text" FriendlyName="'50%'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='{0}' tag='SPAN' /&gt;&quot;, strDynamicGenderSelector)]" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl id='{0}' tag='SPAN' type='' class='' /&gt;&quot;, strDynamicGenderSelector)]" Guid="1e6afb11-23ee-4167-826e-f90cc683f83c" ImageBase64="" InformativeScreenshot="46e33aa71d7372fdceb21a9051d81f50.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="667, 592, 23, 23" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='slider' tag='SPAN' type='' class='ui-slider-handle ui-state-default ui-corner-all' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFWSURBVEhL7Za9joJAFIV9BQ2JhQkFIRQ0dBpITIwJ+jSIjSHSQmHsoMD3kZaC5xDDG5CzuTj4k2UK2NHdYk/ylfd8M0wywwAfzO/KLpcLoijCfr+H53mdobk4jlEUBWt85EWWpik2mw1s28Z8PsdsNusMza1WK7iui/P5zJpvuctoRyRqK+jLdrvF9XplhidZkiT1itqG+rJer3E6nZjhSeb7fu9Px4P6qLfJIMsyEHS4bQM/hXobx6CqKhDvlDWOf1lv/oZMVVXhcGXD4VA4XNloNBIOVyZJknC4svF4LByubDKZCIcrk2VZOK0yup11XYeiKMKgPuq9y5ob+XA4wDRNaJomDMuycDweH7c+e2rqF5WeclqNKOilLsuSGVr+QRzHwXK5xHQ6hWEYnaG5xWJRLzzPc9Z8y4uMQjsMwxC73a4+3K7QXBAELztq8k32znxQBnwBQEypDxL5ukcAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector, Image" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NGetText.Target>
+                        </uix:NGetText>
+                      </Sequence>
+                    </ui:InterruptibleDoWhile.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InterruptibleDoWhile>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="300,82.4" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:LogMessage DisplayName="Log Message - 16" sap:VirtualizedContainerService.HintSize="387.2,144" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Gender was set&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1938, 1048" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH3wUcFjkjSdtABwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJZSURBVEhL7ZbNb9JwGMc9LEoLPynQMrPJyfuSGQ1/gHFuNKKXZdH9DR486nT/wLTiX2C8Gu+e1ADjxUWCQBkQylsBx4tTNFmKdr48oxf4tWsLk4ux+ZzK830+pf097e/UPmKmCi74hJgOYlo2em9MIAJBiGMNRwTwcxsxNWq2MOvh3Z6M25M2AZRBMUQgCHHMgQtEwlG+6vsajvRi8V7UNLH4t+1IeYmFuJ6gixjBQuVXb/+U5d9jHr9kOb+2DnFoMtwTFxQs9sxEAojwa+sQNxakV29NV5CZSDDWLdIQNILhxL0H/Mbmrha5jc3S/Yf5hcui1WnwkI8TZLe4VzPkzpmzCS2SFnvWYq9aXS39ZaojKD0OvCcoEWYKMR9VwElobTxoOoLioyfvTqMy6aiTTnEUONMknW0bjd19BbMC4dnz4MKlD4vejIrsRW9x0Vt1e+BtMfk/kA8OpHa73+58V9Pp9MW6sMTWVGMMmBXoH4eSxLM3S6o1Cvw1QYq9UZyqIH1CAZyRJUmTQ6n/40svt+KvECcQCC9evr7Gxlf8Oz6chM/PL18vnL/QtLkmf8i5Le7NjDU1mFiMnIUSCKphc8GgDXdTMCsoc4EkQTXR0XdRE7h29eUDZgUVLpAiKHgfDNeb4b/AkH9PAOO+q7WrqHFPeYKCfdVwvRlwQZVwFK4s778NdkPbnVAY6IbCnyPRyp27RdIB63243gwjApiUPUQX7e4kPR+j5yIDovRcgp7PO841jvlm6TMiAKBFC9HQq3aES6E+2N4q44rVG4ILFJS5x8BqTIGYP0HPVXjjInEIAAAAAElFTkSuQmCC" InformativeScreenshot="166b0dec6f5b943c3bba8bd47c568921.jpg" Title="Generate a Random Name - Fake Name Generator" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log Message - 17" sap:VirtualizedContainerService.HintSize="483.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Stop - Edge Set Gender - Dispatcher&quot;]" />
+  </Sequence>
+</Activity>
