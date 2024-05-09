@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="882.4,3591.2" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sx="clr-namespace:System.Xml;assembly=System.Private.Xml" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="706.4,900" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sx="clr-namespace:System.Xml;assembly=System.Private.Xml" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
       <x:String>System.Activities</x:String>
@@ -36,6 +36,7 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -158,7 +159,7 @@
       <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="753,2487" Id="Main_1" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
-  <Sequence sap2010:Annotation.AnnotationText="Główny moduł." DisplayName="Main" sap:VirtualizedContainerService.HintSize="892.8,3526.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="Główny moduł." DisplayName="Main" sap:VirtualizedContainerService.HintSize="512,835.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strTargetXAML" />
       <Variable x:TypeArguments="sx:XmlDocument" Default="[New XmlDocument()]" Name="XmlDiagramTree" />
@@ -173,7 +174,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Zmiana nazw aktywności Log Message w podanym projekcie." DisplayName="Rename Log Message Activities" sap:VirtualizedContainerService.HintSize="830.4,3302.4" sap2010:WorkflowViewState.IdRef="Sequence_128">
+    <Sequence sap2010:Annotation.AnnotationText="Zmiana nazw aktywności Log Message w podanym projekcie." DisplayName="Rename Log Message Activities" sap:VirtualizedContainerService.HintSize="449.6,610.4" sap2010:WorkflowViewState.IdRef="Sequence_128">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="intStartCounter" />
         <Variable x:TypeArguments="x:Boolean" Name="boolStopProcess" />
@@ -186,8 +187,8 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message - 1" sap:VirtualizedContainerService.HintSize="768,132.8" sap2010:WorkflowViewState.IdRef="LogMessage_94" Level="Info" Message="[&quot;Start - Rename Log Message Activities&quot;]" />
-      <TryCatch sap2010:Annotation.AnnotationText="Próba pobrania ścieżki do folderu z projektem do sprawdzenia." DisplayName="Try Catch - Browse For Folder" sap:VirtualizedContainerService.HintSize="768,124.8" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+      <ui:LogMessage DisplayName="Log Message - 1" sap:VirtualizedContainerService.HintSize="387.2,124.8" sap2010:WorkflowViewState.IdRef="LogMessage_94" Level="Info" Message="[&quot;Start - Rename Log Message Activities&quot;]" />
+      <TryCatch sap2010:Annotation.AnnotationText="Próba pobrania ścieżki do folderu z projektem do sprawdzenia." DisplayName="Try Catch - Browse For Folder" sap:VirtualizedContainerService.HintSize="387.2,116.8" sap2010:WorkflowViewState.IdRef="TryCatch_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -222,35 +223,38 @@
           </Catch>
         </TryCatch.Catches>
       </TryCatch>
-      <If sap2010:Annotation.AnnotationText="Czy nie podano ścieżki do folderu z projektem?" Condition="[boolStopProcess]" DisplayName="If - boolStopProcess" sap:VirtualizedContainerService.HintSize="768,2792.8" sap2010:WorkflowViewState.IdRef="If_14">
+      <If sap2010:Annotation.AnnotationText="Czy nie podano ścieżki do folderu z projektem?" Condition="[boolStopProcess]" DisplayName="If - boolStopProcess" sap:VirtualizedContainerService.HintSize="387.2,100.8" sap2010:WorkflowViewState.IdRef="If_14">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_129">
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,22.4" sap2010:WorkflowViewState.IdRef="Sequence_129">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - 2" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_97" Level="Error" Message="[&quot;Nie podano ścieżki do folderu z projektem do sprawdzenia - kończę proces&quot;]" />
+            <ui:LogMessage DisplayName="Log Message - 2" sap:VirtualizedContainerService.HintSize="353.6,116" sap2010:WorkflowViewState.IdRef="LogMessage_97" Level="Error" Message="[&quot;Nie podano ścieżki do folderu z projektem do sprawdzenia - kończę proces&quot;]" />
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="734,2403" sap2010:WorkflowViewState.IdRef="Sequence_130">
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,282.4" sap2010:WorkflowViewState.IdRef="Sequence_130">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence sap2010:Annotation.AnnotationText="Utwórz listę Workflows do edycji." DisplayName="Create XAML List" sap:VirtualizedContainerService.HintSize="692,112" sap2010:WorkflowViewState.IdRef="Sequence_113">
+            <Sequence sap2010:Annotation.AnnotationText="Utwórz listę Workflows do edycji." DisplayName="Create XAML List" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_113">
               <Sequence.Variables>
                 <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="listProjectWorkflowsTemp" />
                 <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="listProjectFolders" />
+                <Variable x:TypeArguments="scg:List(x:String)" Name="listProjectSubFolders" />
+                <Variable x:TypeArguments="scg:List(x:String)" Name="listProjectSubWorkflowsTemp" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -259,9 +263,9 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Delay DisplayName="Delay - 2s" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
-              <ui:LogMessage DisplayName="Log Message - 3" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="LogMessage_91" Level="Warn" Message="[&quot;Pobieram pliki XAML z folderu: &quot; + strProjectFolderFilePath]" />
-              <Sequence sap2010:Annotation.AnnotationText="Główny folder projektu." DisplayName="Main Folder" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_126">
+              <Delay DisplayName="Delay - 2s" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="449.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              <ui:LogMessage DisplayName="Log Message - 3" sap:VirtualizedContainerService.HintSize="449.6,124.8" sap2010:WorkflowViewState.IdRef="LogMessage_91" Level="Warn" Message="[&quot;Pobieram pliki XAML z folderu: &quot; + strProjectFolderFilePath]" />
+              <Sequence sap2010:Annotation.AnnotationText="Główny folder projektu." DisplayName="Main Folder" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_126">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -368,7 +372,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
               </Sequence>
-              <Sequence sap2010:Annotation.AnnotationText="Pozostałe foldery projektu." DisplayName="Other Folders" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_127">
+              <Sequence sap2010:Annotation.AnnotationText="Pozostałe foldery projektu." DisplayName="Other Folders" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_127">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -376,7 +380,7 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign - listProjectFolders" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_17">
+                <Assign DisplayName="Assign - listProjectFolders" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_17">
                   <Assign.To>
                     <OutArgument x:TypeArguments="scg:List(x:String)">[listProjectFolders]</OutArgument>
                   </Assign.To>
@@ -384,20 +388,20 @@
                     <InArgument x:TypeArguments="scg:List(x:String)">[System.IO.Directory.GetDirectories(strProjectFolderFilePath).ToList]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po pozostałych folderach w folderze głównym." DisplayName="For Each - listProjectFolders" sap:VirtualizedContainerService.HintSize="434,94" sap2010:WorkflowViewState.IdRef="ForEach`1_207" Values="[listProjectFolders]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po pozostałych folderach w folderze głównym." DisplayName="For Each - listProjectFolders" sap:VirtualizedContainerService.HintSize="433.6,100.8" sap2010:WorkflowViewState.IdRef="ForEach`1_207" Values="[listProjectFolders]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="CurrentListFolder" />
                       </ActivityAction.Argument>
-                      <Sequence sap2010:Annotation.AnnotationText="Dodanie pozostałych plików Workflow do listy." DisplayName="Get Other Workflows files" sap:VirtualizedContainerService.HintSize="496,373" sap2010:WorkflowViewState.IdRef="Sequence_122">
+                      <Sequence sap2010:Annotation.AnnotationText="Dodanie pozostałych plików Workflow do listy." DisplayName="Get Other Workflows files" sap:VirtualizedContainerService.HintSize="512,411.2" sap2010:WorkflowViewState.IdRef="Sequence_122">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign - listProjectWorkflowsTemp" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_16">
+                        <Assign DisplayName="Assign - listProjectWorkflowsTemp" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
                           <Assign.To>
                             <OutArgument x:TypeArguments="scg:List(x:String)">[listProjectWorkflowsTemp]</OutArgument>
                           </Assign.To>
@@ -405,13 +409,13 @@
                             <InArgument x:TypeArguments="scg:List(x:String)">[System.IO.Directory.GetFiles(CurrentListFolder, "*.xaml").ToList]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po liście z plikami w celu dodania pozostałych Workflow do listy wynikowej." DisplayName="For Each - listProjectWorkflowsTemp" sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="ForEach`1_210" Values="[listProjectWorkflowsTemp]">
+                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po liście z plikami w celu dodania pozostałych Workflow do listy wynikowej." DisplayName="For Each - listProjectWorkflowsTemp" sap:VirtualizedContainerService.HintSize="449.6,100.8" sap2010:WorkflowViewState.IdRef="ForEach`1_210" Values="[listProjectWorkflowsTemp]">
                           <ui:ForEach.Body>
                             <ActivityAction x:TypeArguments="x:String">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="x:String" Name="CurrentListItem" />
                               </ActivityAction.Argument>
-                              <If sap2010:Annotation.AnnotationText="Czy element listy zawiera SANDBOX?" Condition="[CurrentListItem.ToUpper.Contains(&quot;SANDBOX&quot;)]" DisplayName="If - CurrentListItem.ToUpper.Contains(&quot;SANDBOX&quot;)" sap:VirtualizedContainerService.HintSize="410,439" sap2010:WorkflowViewState.IdRef="If_12">
+                              <If sap2010:Annotation.AnnotationText="Czy element listy zawiera SANDBOX?" Condition="[CurrentListItem.ToUpper.Contains(&quot;SANDBOX&quot;)]" DisplayName="If - CurrentListItem.ToUpper.Contains(&quot;SANDBOX&quot;)" sap:VirtualizedContainerService.HintSize="449.6,438.4" sap2010:WorkflowViewState.IdRef="If_12">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -420,23 +424,23 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="376,113" sap2010:WorkflowViewState.IdRef="Sequence_120">
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,134.4" sap2010:WorkflowViewState.IdRef="Sequence_120">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:Continue sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                                    <ui:Continue sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="Continue_2" />
                                   </Sequence>
                                 </If.Then>
                                 <If.Else>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="300,113" sap2010:WorkflowViewState.IdRef="Sequence_121">
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,134.4" sap2010:WorkflowViewState.IdRef="Sequence_121">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <AddToCollection x:TypeArguments="x:String" Collection="[listProjectWorkflows]" DisplayName="Add To Collection - listProjectWorkflows" sap:VirtualizedContainerService.HintSize="258,25" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[CurrentListItem]" />
+                                    <AddToCollection x:TypeArguments="x:String" Collection="[listProjectWorkflows]" DisplayName="Add To Collection - listProjectWorkflows" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[CurrentListItem]" />
                                   </Sequence>
                                 </If.Else>
                               </If>
@@ -450,6 +454,78 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:ForEach>
+                        <Sequence sap2010:Annotation.AnnotationText="Dodanie plików XAML z podfolderów." DisplayName="Get XAML from Subfolders" sap:VirtualizedContainerService.HintSize="449.6,79.2" sap2010:WorkflowViewState.IdRef="Sequence_136">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Assign - listProjectSubFolders" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_23">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="scg:List(x:String)">[listProjectSubFolders]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="scg:List(x:String)">[System.IO.Directory.GetDirectories(CurrentListFolder).ToList]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Petla po sub-folderach w projekcie." DisplayName="For Each - listProjectSubFolders" sap:VirtualizedContainerService.HintSize="433.6,79.2" sap2010:WorkflowViewState.IdRef="ForEach`1_220" Values="[listProjectSubFolders]">
+                            <ui:ForEach.Body>
+                              <ActivityAction x:TypeArguments="x:String">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="x:String" Name="CurrentListSubFolder" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,279.2" sap2010:WorkflowViewState.IdRef="Sequence_137">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="Assign - listProjectSubWorkflowsTemp" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_24">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="scg:List(x:String)">[listProjectSubWorkflowsTemp]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="scg:List(x:String)">[System.IO.Directory.GetFiles(CurrentListSubFolder, "*.xaml").ToList]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Dodanie pozostałych sub-plikow XAML do listy." DisplayName="For Each - listProjectSubWorkflowsTemp" sap:VirtualizedContainerService.HintSize="433.6,79.2" sap2010:WorkflowViewState.IdRef="ForEach`1_222" Values="[listProjectSubWorkflowsTemp]">
+                                    <ui:ForEach.Body>
+                                      <ActivityAction x:TypeArguments="x:String">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="x:String" Name="CurrentListSubItem" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,134.4" sap2010:WorkflowViewState.IdRef="Sequence_138">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <AddToCollection x:TypeArguments="x:String" Collection="[listProjectWorkflows]" DisplayName="Add To Collection - listProjectWorkflows - Sub" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="AddToCollection`1_5" Item="[CurrentListSubItem]" />
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </ui:ForEach.Body>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:ForEach>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ForEach.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ForEach>
+                        </Sequence>
                       </Sequence>
                     </ActivityAction>
                   </ui:ForEach.Body>
@@ -461,7 +537,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po pozostałych folderach w folderze głównym." DisplayName="For Each - listProjectFolders" sap:VirtualizedContainerService.HintSize="434,94" sap2010:WorkflowViewState.IdRef="ForEach`1_211" Values="[listProjectFolders]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po pozostałych folderach w folderze głównym." DisplayName="For Each - listProjectFolders" sap:VirtualizedContainerService.HintSize="433.6,108" sap2010:WorkflowViewState.IdRef="ForEach`1_211" Values="[listProjectFolders]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
@@ -540,7 +616,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
               </Sequence>
-              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Zalogowanie plików XAML z listy." DisplayName="For Each - listProjectWorkflows" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="ForEach`1_214" Values="[listProjectWorkflows]">
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Zalogowanie plików XAML z listy." DisplayName="For Each - listProjectWorkflows" sap:VirtualizedContainerService.HintSize="449.6,100.8" sap2010:WorkflowViewState.IdRef="ForEach`1_214" Values="[listProjectWorkflows]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:String">
                     <ActivityAction.Argument>
@@ -557,8 +633,8 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
-              <ui:LogMessage DisplayName="Log Message - 5" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="LogMessage_93" Level="Info" Message="[&quot;Liczba plików: &quot; + listProjectWorkflows.Count.ToString]" />
-              <Assign DisplayName="Assign - intStartCounter" sap:VirtualizedContainerService.HintSize="450,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <ui:LogMessage DisplayName="Log Message - 5" sap:VirtualizedContainerService.HintSize="449.6,124.8" sap2010:WorkflowViewState.IdRef="LogMessage_93" Level="Info" Message="[&quot;Liczba plików: &quot; + listProjectWorkflows.Count.ToString]" />
+              <Assign DisplayName="Assign - intStartCounter" sap:VirtualizedContainerService.HintSize="449.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_8">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Int32">[intStartCounter]</OutArgument>
                 </Assign.To>
@@ -567,13 +643,13 @@
                 </Assign.Value>
               </Assign>
             </Sequence>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po plikach XAML w celu zmiany nazwy aktywności Log Message." DisplayName="For Each - listProjectWorkflows" sap:VirtualizedContainerService.HintSize="692,2163" sap2010:WorkflowViewState.IdRef="ForEach`1_217" Values="[listProjectWorkflows]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po plikach XAML w celu zmiany nazwy aktywności Log Message." DisplayName="For Each - listProjectWorkflows" sap:VirtualizedContainerService.HintSize="449.6,108" sap2010:WorkflowViewState.IdRef="ForEach`1_217" Values="[listProjectWorkflows]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="CurrentXAML_File" />
                   </ActivityAction.Argument>
-                  <Sequence sap2010:Annotation.AnnotationText="Przeprocesuj plik XAML." DisplayName="Process XAML File" sap:VirtualizedContainerService.HintSize="656,2008" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                  <Sequence sap2010:Annotation.AnnotationText="Przeprocesuj plik XAML." DisplayName="Process XAML File" sap:VirtualizedContainerService.HintSize="512,606.4" sap2010:WorkflowViewState.IdRef="Sequence_84">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -581,8 +657,8 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message - 6" sap:VirtualizedContainerService.HintSize="594,92" sap2010:WorkflowViewState.IdRef="LogMessage_70" Level="Warn" Message="[&quot;Sprawdzam plik: &quot; + System.IO.Path.GetFileName(CurrentXAML_File)]" />
-                    <Sequence sap2010:Annotation.AnnotationText="Odczytanie pliku XAML i deserializacja go do obiektu." DisplayName="Read XAML" sap:VirtualizedContainerService.HintSize="594,112" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                    <ui:LogMessage DisplayName="Log Message - 6" sap:VirtualizedContainerService.HintSize="449.6,124.8" sap2010:WorkflowViewState.IdRef="LogMessage_70" Level="Warn" Message="[&quot;Sprawdzam plik: &quot; + System.IO.Path.GetFileName(CurrentXAML_File)]" />
+                    <Sequence sap2010:Annotation.AnnotationText="Odczytanie pliku XAML i deserializacja go do obiektu." DisplayName="Read XAML" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_67">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -598,7 +674,7 @@
                         <InArgument x:TypeArguments="x:String">[strTargetXAML]</InArgument>
                       </InvokeMethod>
                     </Sequence>
-                    <Sequence sap2010:Annotation.AnnotationText="Dodanie przestrzeni nazw wraz z definicjami. Należy podawać nazwę elementu oraz jego definicję =&gt; obydwie informacje są w nagłówku analizowanego pliku XAML.&#xA;&#xA;&quot;ui&quot; =&gt; &quot;http://schemas.uipath.com/workflow/activities&quot;&#xA;&quot;x&quot; =&gt; &quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#xA;&quot;sap2010&quot; =&gt; &quot;http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation&quot;" DisplayName="Add Namespace" sap:VirtualizedContainerService.HintSize="594,213" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                    <Sequence sap2010:Annotation.AnnotationText="Dodanie przestrzeni nazw wraz z definicjami. Należy podawać nazwę elementu oraz jego definicję =&gt; obydwie informacje są w nagłówku analizowanego pliku XAML.&#xA;&#xA;&quot;ui&quot; =&gt; &quot;http://schemas.uipath.com/workflow/activities&quot;&#xA;&quot;x&quot; =&gt; &quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#xA;&quot;sap2010&quot; =&gt; &quot;http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation&quot;" DisplayName="Add Namespace" sap:VirtualizedContainerService.HintSize="449.6,196.8" sap2010:WorkflowViewState.IdRef="Sequence_68">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -628,24 +704,24 @@
                         <InArgument x:TypeArguments="x:String">http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation</InArgument>
                       </InvokeMethod>
                     </Sequence>
-                    <Sequence sap2010:Annotation.AnnotationText="Ustaw atrybut i zapisz plik." DisplayName="Update Attribute &amp; Save File" sap:VirtualizedContainerService.HintSize="594,1329" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                    <Sequence sap2010:Annotation.AnnotationText="Ustaw atrybut i zapisz plik." DisplayName="Update Attribute &amp; Save File" sap:VirtualizedContainerService.HintSize="449.6,79.2" sap2010:WorkflowViewState.IdRef="Sequence_106">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="strTargetDisplayName" />
                       </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEach x:TypeArguments="sx:XmlNode" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po Nodach: &quot;ui:LogMessage&quot;." DisplayName="For Each - ui:LogMessage" sap:VirtualizedContainerService.HintSize="532,879" sap2010:WorkflowViewState.IdRef="ForEach`1_201" Values="[XmlDiagramTree.DocumentElement.SelectNodes(&quot;//ui:LogMessage&quot;, XmlSelectorsNamespaceManager)]">
+                      <ui:ForEach x:TypeArguments="sx:XmlNode" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po Nodach: &quot;ui:LogMessage&quot;." DisplayName="For Each - ui:LogMessage" sap:VirtualizedContainerService.HintSize="532,727.2" sap2010:WorkflowViewState.IdRef="ForEach`1_201" Values="[XmlDiagramTree.DocumentElement.SelectNodes(&quot;//ui:LogMessage&quot;, XmlSelectorsNamespaceManager)]">
                         <ui:ForEach.Body>
                           <ActivityAction x:TypeArguments="sx:XmlNode">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sx:XmlNode" Name="CurrentNode" />
                             </ActivityAction.Argument>
-                            <Sequence sap2010:Annotation.AnnotationText="Ustaw wartość Noda." DisplayName="Set Node Value" sap:VirtualizedContainerService.HintSize="496,724" sap2010:WorkflowViewState.IdRef="Sequence_112">
+                            <Sequence sap2010:Annotation.AnnotationText="Ustaw wartość Noda." DisplayName="Set Node Value" sap:VirtualizedContainerService.HintSize="496,539.2" sap2010:WorkflowViewState.IdRef="Sequence_112">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:Boolean" Name="boolDefaultNodeNotExists" />
                               </Sequence.Variables>
@@ -794,7 +870,7 @@
               </ui:ForEach.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
@@ -803,9 +879,9 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:LogMessage DisplayName="Log Message - 12" sap:VirtualizedContainerService.HintSize="768,92" sap2010:WorkflowViewState.IdRef="LogMessage_95" Level="Info" Message="[&quot;Stop - Rename Log Message Activities&quot;]" />
+      <ui:LogMessage DisplayName="Log Message - 12" sap:VirtualizedContainerService.HintSize="387.2,116" sap2010:WorkflowViewState.IdRef="LogMessage_95" Level="Info" Message="[&quot;Stop - Rename Log Message Activities&quot;]" />
     </Sequence>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="830,52" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="449.6,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_10">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,497" sap2010:WorkflowViewState.IdRef="Sequence_66">
           <sap:WorkflowViewStateService.ViewState>
@@ -1035,7 +1111,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="830,52" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="CommentOut_9">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,223" sap2010:WorkflowViewState.IdRef="Sequence_61">
           <sap:WorkflowViewStateService.ViewState>
