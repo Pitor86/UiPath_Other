@@ -42,9 +42,10 @@ listEmails = listEmails.AsEnumerable().Where(x => x.Subject.ToLower().Contains("
 
 
 =KONWERSJE=
-intNumber = Int32.Parse(jsonConfig["RS"]["DeleteFile"]["NR"].ToString())
-arrTest = JArray.Parse(jsonConfig["AE"].ToString()).ToObject<string[]>()
-boolTest = Convert.ToBoolean(Config["ShouldMarkJobAsFaulted"].ToString())
+intNumber = Int32.Parse(jsonConfig["RS"]["DeleteFile"]["NR"].ToString())			=> konwersja String do Integer
+arrTest = JArray.Parse(jsonConfig["AE"].ToString()).ToObject<string[]>()			=> konwersja Json Array do Array
+boolTest = Convert.ToBoolean(Config["ShouldMarkJobAsFaulted"].ToString())			=> konwersja String do Boolean
+strTestChar = Convert.ToChar(60).ToString()							=> konwersja kodu ASCII do String (<)
 
 
 =STRING=
@@ -289,9 +290,13 @@ styles (dodatkowe formatowanie daty), result (zmienna z wynikiem)				=> jeżeli 
 StrConv(Split(strEmailTo, ".")(0), vbProperCase) + ", " + vbCrLf + vbCrLf 			=> pobranie imienia z adresu Email pracownika
 System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Split(strEmailTo, ".")(0)) + ","	=> pobranie imienia z adresu Email pracownika - aktualna wersja
 
-Jet Basics - Filter Syntax, np.: "[subject]='IDs Request'"					=> filtrowanie e-maili
-CurrentMail.Header["DateReceived"].ToString()							=> data otrzymania z obiektu wiadomości
-CurrentMail.Header["Message-ID"].ToString()							=> unikatowy numer ID z obiektu wiadomości, po którym można filtrować w Get Emails
+Jet Basics - Filter Syntax, musi być Exchange w wersji 2010 SP1 lub nowszy			=> filtrowanie e-maili, : - zawiera, := - równa się
+"[subject]='IDs Request'"									=> filtrowanie e-maili
+"Subject: " + "Temat wiadomości zawiera" + " AND From " + "noreply@test.pl" + 
+" AND Received: >= 6/13/2024"									=> filtrowanie e-maili
+
+CurrentMail.Headers["DateReceived"].ToString()							=> data otrzymania z obiektu wiadomości
+CurrentMail.Headers["Message-ID"].ToString()							=> unikatowy numer ID z obiektu wiadomości, po którym można filtrować w Get Emails
 CurrentMail.Sender.Address.ToString()								=> adres nadawcy
 CurrentMail.SenderEmailAddress()								=> adres nadawcy
 
