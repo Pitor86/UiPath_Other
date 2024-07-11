@@ -67,6 +67,9 @@ strTest.Split('.', StringSplitOptions.None)							=> użycie metody Split
 dtTest = dtTest.AsEnumerable().Where(x => x.Field<DateTime>("Column14") >= DateTime
 .Now.AddDays(-1)).CopyToDataTable()								=> filtrowanie tabeli po dacie podanej w kolumnie
 
+dtTest.AsEnumerable().ToList().ForEach(x => x("ColumnNameOrIndex) = x("ColumnNameOrIndex").ToLower())	=> w InvokeCode, zmiana wartości podanej kolumny
+
+
 ==========
 2) UiPath - VB - wyrażenia:
 
@@ -82,6 +85,11 @@ New BusinessRuleException("Błąd - inna nazwa firmy w Optimie, a inna w Raporci
 
 =CONFIG=
 Config("Mail_EmailOdbiorca").ToString 								=> odwołanie się do klucza\wpisu podanego w pliku Config
+
+
+=REGEX=
+intTest = Int32.Parse(System.Text.RegularExpressions.Regex.Match(strTest, "\\d+$")
+.Value.ToString())										=> użycie metody Regex w Assign (tu zwrócenie cyfr z końca podanego Stringa)
 
 
 =REPLACE=
