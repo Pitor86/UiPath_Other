@@ -46,6 +46,7 @@ intNumber = Int32.Parse(jsonConfig["RS"]["DeleteFile"]["NR"].ToString())			=> ko
 arrTest = JArray.Parse(jsonConfig["AE"].ToString()).ToObject<string[]>()			=> konwersja Json Array do Array
 boolTest = Convert.ToBoolean(Config["ShouldMarkJobAsFaulted"].ToString())			=> konwersja String do Boolean
 strTestChar = Convert.ToChar(60).ToString()							=> konwersja kodu ASCII do String (<)
+strJsonArr = JsonConvert.SerializeObject(arrTest)						=> konwersja Array do Json Array (string)
 
 
 =STRING=
@@ -53,7 +54,11 @@ Aby przełamać linię (w VB _) użyć: @ przed String: @"jakiś tekst".
 
 
 =DATA=
-dateTest = DateTime.ParseExact(strFirstDataZawarcia, "yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture)
+dateTest = DateTime.ParseExact(strFirstDataZawarcia, "yyyy.MM.dd", System
+.Globalization.CultureInfo.InvariantCulture)							=> konwersja Stringa na datę
+
+boolInvalidDate = !DateTime.TryParseExact(strTestDate, "MM/dd/yyyy HH:mm:ss", null, System
+.Globalization.DateTimeStyles.None, out dateTempDate)						=> czy podana data ma nieprawidłwy format
 
 ciPolishCulture = new CultureInfo("pl-PL")
 dateDataZawarcia = DateTime.Parse(strFirstDataZawarcia, ciPolishCulture)			=> aby móc przekonwertować datę: "24 października 2024" na datę
@@ -68,6 +73,11 @@ dtTest = dtTest.AsEnumerable().Where(x => x.Field<DateTime>("Column14") >= DateT
 .Now.AddDays(-1)).CopyToDataTable()								=> filtrowanie tabeli po dacie podanej w kolumnie
 
 dtTest.AsEnumerable().ToList().ForEach(x => x("ColumnNameOrIndex) = x("ColumnNameOrIndex").ToLower())	=> w InvokeCode, zmiana wartości podanej kolumny
+
+boolEmptyCellExists = dtTest.AsEnumerable().Any(x => string.IsNullOrEmpty(x.Field<string>("Status")))	=> czy są puste wiersze
+
+boolNewerDateExists = dtTest.AsEnumerable().Any(x => System.DateTime.ParseExact(x["Data od"]
+.ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) > dateDataWejscia)	=> czy jest nowsza data w tabeli
 
 
 ==========
@@ -90,6 +100,9 @@ Config("Mail_EmailOdbiorca").ToString 								=> odwołanie się do klucza\wpisu
 =REGEX=
 intTest = Int32.Parse(System.Text.RegularExpressions.Regex.Match(strTest, "\\d+$")
 .Value.ToString())										=> użycie metody Regex w Assign (tu zwrócenie cyfr z końca podanego Stringa)
+
+boolUnderlineDigitExists = System.Text.RegularExpressions.Regex
+.IsMatch(strTest, "(_\\d+)(?=.pdf)", RegexOptions.IgnoreCase)					=> czy podany string kończy się _i cyfrą oraz występuje przed .pdf
 
 
 =REPLACE=
