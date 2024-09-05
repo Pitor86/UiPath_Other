@@ -13,6 +13,7 @@ dictTest = new Dictionary<String, String>{{"Data\\Output", "*.xls?"}}				=> utwo
 dictTest["cos"].ToString()									=> pobranie wartości klucza "cos"
 dictTest("cos") = "1"										=> przypisanie wartości do klucza "cos"
 dictTest.Add											=> aby dodać nowy klucz, użyć "Invoke Method" z 2 argumentami lub "Add to" lub "Add Item"
+boolKeyExists = dictTest.Contains("Nazwa_Klucza")						=> sprawdzenie czy istnieje podany klucz w słowniku
 
 dictTest = new Dictionary<String, string[]>{{"Pekao", new string[]{"cos", "1"}}
 , {"Citi", new string[]{"cos", "2"}}}								=> utworzy słownik z 2 podanymi elementami
@@ -63,6 +64,8 @@ boolInvalidDate = !DateTime.TryParseExact(strTestDate, "MM/dd/yyyy HH:mm:ss", nu
 ciPolishCulture = new CultureInfo("pl-PL")
 dateDataZawarcia = DateTime.Parse(strFirstDataZawarcia, ciPolishCulture)			=> aby móc przekonwertować datę: "24 października 2024" na datę
 
+"[" + System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss:fff") + "]"				=> użycie daty UTC z milisekundami
+
 
 =SPLIT=
 strTest.Split('.', StringSplitOptions.None)							=> użycie metody Split
@@ -89,8 +92,9 @@ TransactionItem.SpecificContent("Nazwa bazy").ToString 						=> odwołanie się 
 
 
 =THROW=
-New Exception("Nie zalogowano do Optimy") 							=> wyrzucenie błędu aplikacji - do powtórki
-New BusinessRuleException("Błąd - inna nazwa firmy w Optimie, a inna w Raporcie fakturowania") 	=> wyrzucenie błędu biznesowego - nie powtarzamy
+new ApplicationException(jsonConfig["AE"][1].ToString(), exception){Data = {{"ExType", "AE"}}}	=> wyrzucenie błędu aplikacyjnego
+new BusinessRuleException(jsonConfig["BE"][1].ToString()){Data = {{"ExType", "BE"}, 
+{"QIStatus", "OK"}, {"QISyncStatus", "Oczekuje"}}}						=> wyrzucenie błędu biznesowego
 
 
 =CONFIG=
@@ -104,11 +108,15 @@ intTest = Int32.Parse(System.Text.RegularExpressions.Regex.Match(strTest, "\\d+$
 boolUnderlineDigitExists = System.Text.RegularExpressions.Regex
 .IsMatch(strTest, "(_\\d+)(?=.pdf)", RegexOptions.IgnoreCase)					=> czy podany string kończy się _i cyfrą oraz występuje przed .pdf
 
+strNewTest = System.Text.RegularExpressions.Regex.Replace(strOldTest, "[a-zA-Z]+$"
+, colSomeRegExMatch.First.ToString().ToLower).Trim						=> użycie metody Regex Replace (zmiana ostatnich liter na małe-uzyskane w Match jako col)
+
+strNewTest = System.Text.RegularExpressions.Regex.Replace(strKwotaKupna
+.Split(".", StringSplitOptions.TrimEntries).Last(), "\\s", "")					=> usunięcie białych znaków w liczbie po kropce (zamiana na pusty String)
+
 
 =REPLACE=
 boolElementExists.ToString.Replace("True", "Tak").Replace("False", "Nie") 			=> użycie metody Replace
-strNewTest = System.Text.RegularExpressions.Regex.Replace(strOldTest, "[a-zA-Z]+$"
-, colSomeRegExMatch.First.ToString().ToLower).Trim						=> użycie metody Regex Replace (zmiana ostatnich liter na małe-uzyskane w Match jako col)
 
 
 =STRING=
@@ -381,15 +389,17 @@ Json => Newtonsoft.Json.Linq.JObject								=> Json
 w pliku Config wpis: jsonTimeoutsExceptions							=> Values for activities Timeouts, Delays, Retry Scopes, Exceptions
 Odwołanie w kodzie np: CInt(jsonConfig("TO")("Medium").ToString)
 
-{"TO":{"VShort":2, "Short":4, "Medium":16, Long"":64, "VLong":256},
-"TOms":{"VShort":2000, "Short":4000, "Medium":16000, Long"":64000, "VLong":256000},
-"DEL":{"D2":2, "D4":4, "D6":6, "BeforePowerPointOpen":2, "AfterPowerPointOpen":2},
-"RS":{"DeleteFiles":{"NR":5, "TS":2}},
-"AE":["AE00: Unexpected system exception=>Error: {0}=>At: {1}.{2}",
-"AE01: Couldn't do something.{0}"],
-"BE":["BE00: No suitable E-mails found in the inbox to process.", 
-"BE01: New Pdf layout received from the Bank. Cannot process, please contact with RPA Team.{0}", 
-"BE02: No entries from <varDateFilter> found in Excel report. Moving to next transaction.{0}"]}
+{"TO":{"VShort":2, "Short":4, "Medium":16, "Long":64, "VLong":256},
+"TOms":{"VShort":2000, "Short":4000, "Medium":16000, "Long":64000, "VLong":256000},
+"DEL":{"D2":2, "D4":4, "D6":6},
+"RS":{"DeleteFiles":{"NR":3, "TS":4}, "ExcelReportProcess":{"NR":3, "TS":6}, "OutlookGetEmails":{"NR":3, "TS":8}, "AppXYLogin":{"NR":2, "TS":6}, "EdgeLoadingPage":{"NR":9, "TS":3}},
+"SE":["SE00: Critical error while reading Config file.", 
+"SE01: Critical error while initializing the environment.", 
+"SE02: Unexpected system exception."], 
+"AE":["AE00: Robot couldn't open Excel input file.", 
+"AE01: Robot couldn't login to AppXY."], 
+"BE":["BE00: No input data found in: {0} to process.", 
+"BE01: Some data isn't correct. Moving to next transaction."]}
 
 *Use assets for variables that are likely to change and be used many times, shared between Robots. 
 	E.g. Email address for business, Email subjects & bodies, WebApp Url.
