@@ -114,6 +114,9 @@ strNewTest = System.Text.RegularExpressions.Regex.Replace(strOldTest, "[a-zA-Z]+
 strNewTest = System.Text.RegularExpressions.Regex.Replace(strKwotaKupna
 .Split(".", StringSplitOptions.TrimEntries).Last(), "\\s", "")					=> usunięcie białych znaków w liczbie po kropce (zamiana na pusty String)
 
+strTrimString = System.Text.RegularExpressions.Regex
+.Replace(strTestString, "(^\\s+|\\s+$)", "").Trim().ToString()					=> usunięcie białych znaków z początku i końca Stringa
+
 
 =REPLACE=
 boolElementExists.ToString.Replace("True", "Tak").Replace("False", "Nie") 			=> użycie metody Replace
