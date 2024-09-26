@@ -394,7 +394,7 @@ Odwołanie w kodzie np: CInt(jsonConfig("TO")("Medium").ToString)
 
 {"TO":{"VShort":2, "Short":4, "Medium":16, "Long":64, "VLong":256},
 "TOms":{"VShort":2000, "Short":4000, "Medium":16000, "Long":64000, "VLong":256000},
-"DEL":{"D2":2, "D4":4, "D6":6},
+"DEL":{"D2":2, "D4":4, "D6":6, "WaitForQueue":45},
 "RS":{"DeleteFiles":{"NR":3, "TS":4}, "ExcelReportProcess":{"NR":3, "TS":6}, "OutlookGetEmails":{"NR":3, "TS":8}, "AppXYLogin":{"NR":2, "TS":6}, "EdgeLoadingPage":{"NR":9, "TS":3}},
 "SE":["SE00: Critical error while reading Config file.", 
 "SE01: Critical error while initializing the environment.", 
