@@ -248,8 +248,8 @@ arrTest = dtTestExcel.Columns.Cast<DataColumn>().Select(c => ColumnName)
 
 arrMissingColumnNames = 
 (from c in Enumerable.Range(0, dtTest.Columns.Count) 
-where string.IsNullOrEmpty(string.Join("", Enumerable.Rane(intLoopCounter, 1)
-.Select(r => dtTest.Rows[r][c])).ToString().Trim() 
+where string.IsNullOrEmpty(string.Join("", Enumerable.Range(intLoopCounter, 1)
+.Select(r => dtTest.Rows[r][c])).ToString().Trim()) 
 select dtTest.Columns[c].ColumnName).ToArray()	=> Zwrócenie tablicy z nazwami kolumn, w których są puste komórki. Użyć w For Each Row in Data Table z podaną zmienną: intLoopCounter
 
 
