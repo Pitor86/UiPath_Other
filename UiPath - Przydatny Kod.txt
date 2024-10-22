@@ -89,6 +89,8 @@ boolNewerDateExists = dtTest.AsEnumerable().Any(x => System.DateTime.ParseExact(
 =QUEUE ITEM=
 TransactionItem.Reference.ToString 								=> odwołanie się do nazwy\reference QI
 TransactionItem.SpecificContent("Nazwa bazy").ToString 						=> odwołanie się do zawartości QI
+qiTest = new UiPath.Core.QueueItem(){Reference = "Test123", 
+SpecificContent = new Dictionary<String, Object>{{"strMiasto", "Krakow"}}}			=> inicjalizacja nowego QI
 
 
 =THROW=
