@@ -96,7 +96,7 @@ SpecificContent = new Dictionary<String, Object>{{"strMiasto", "Krakow"}}}			=> 
 =THROW=
 new ApplicationException(jsonConfig["AE"][1].ToString(), exception){Data = {{"ExType", "AE"}}}	=> wyrzucenie błędu aplikacyjnego
 new BusinessRuleException(jsonConfig["BE"][1].ToString()){Data = {{"ExType", "BE"}, 
-{"QIStatus", "OK"}, {"QISyncStatus", "Oczekuje"}}}						=> wyrzucenie błędu biznesowego
+{"QIStatus", jsonConfig["Status"][0].ToString()}, {"QISyncStatus", "Oczekuje"}}}		=> wyrzucenie błędu biznesowego
 
 
 =CONFIG=
@@ -408,15 +408,19 @@ Odwołanie w kodzie np: CInt(jsonConfig("TO")("Medium").ToString)
 
 {"TO":{"VShort":2, "Short":4, "Medium":16, "Long":64, "VLong":256},
 "TOms":{"VShort":2000, "Short":4000, "Medium":16000, "Long":64000, "VLong":256000},
-"DEL":{"D2":2, "D4":4, "D6":6, "WaitForQueue":45},
+"DEL":{"D1":1, "D2":2, "D3":3, "D4":4, "D6":6, "WaitForQueue":45},
 "RS":{"DeleteFiles":{"NR":3, "TS":4}, "ExcelReportProcess":{"NR":3, "TS":6}, "OutlookGetEmails":{"NR":3, "TS":8}, "AppXYLogin":{"NR":2, "TS":6}, "EdgeLoadingPage":{"NR":9, "TS":3}},
 "SE":["SE00: Critical error while reading Config file.", 
 "SE01: Critical error while initializing the environment.", 
 "SE02: Unexpected system exception."], 
 "AE":["AE00: Robot couldn't open Excel input file.", 
-"AE01: Robot couldn't login to AppXY."], 
+"AE01: Robot couldn't login to AppXY.", 
+"AE02: Robot couldn't logout from AppXY."], 
 "BE":["BE00: No input data found in: {0} to process.", 
-"BE01: Some data isn't correct. Moving to next transaction."]}
+"BE01: Missing required column in: {0}.", 
+"BE02: Some data isn't correct. Moving to next transaction."],
+"Status": ["OK", "Błąd - wprowadź pozycję ręcznie", "Błąd - brakujące\\niepoprawne dane do wprowadzenia: {0}"]}
+
 
 *Use assets for variables that are likely to change and be used many times, shared between Robots. 
 	E.g. Email address for business, Email subjects & bodies, WebApp Url.
