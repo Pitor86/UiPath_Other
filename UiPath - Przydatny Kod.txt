@@ -157,6 +157,12 @@ strTestString.Replace("ą", "a").Replace("ć", "c").Replace("ę", "e").Replace("
 If(intTest = 1,"wiersz", If(intTest > 1 And intTest < 5, "wiersze", If(intTest.ToString.EndsWith("12") Or intTest.ToString.EndsWith("13") Or intTest.ToString.EndsWith("14"), "wierszy", If(intTest.ToString.EndsWith("2") Or intTest.ToString.EndsWith("3") Or intTest
 .ToString.EndsWith("4"), "wiersze", "wierszy"))))						=> odmiana liczebnika przy logowaniu
 
+strTest.Split(".", StringSplitOptions.TrimEntries).Last().Length > 5 
+|| strTest.Split(",", StringSplitOptions.TrimEntries).Last().Length > 5				=> warunek czy liczba jako String ma > 5 miejsc po przecinku (format US i EUR)
+
+strTest = Math.Round(Decimal.Parse(System.Text.RegularExpressions.Regex
+.Replace(strTest, "\\s", "").Replace(",", ".")), 5).ToString().TrimEnd('0').Replace(".", ",")	=> zaokrąglenie liczby do 5 miejsc po przecinku i zmiana na format europejski
+
 
 =SPLIT=
 Split(strTest, ".")(0) 										=> 1-szy element z metody Split
@@ -245,8 +251,8 @@ dtTest = dtTest.DefaultView.ToTable(false, listColumnsToCheck.ToArray())			=> od
 
 
 =LINQ=
-arrTest = dtTestExcel.Columns.Cast<DataColumn>().Select(c => ColumnName)
-.Where(x => x.ToString() != "STATUS").ToArray()							=> Pobranie nazw kolumn z tabeli
+arrTest = dtTestExcel.Columns.Cast<DataColumn>().Where(x => !x.ToString().Equals("Status"))
+.Select(x => x.ToString()).ToArray()								=> Pobranie nazw kolumn z tabeli
 
 arrMissingColumnNames = 
 (from c in Enumerable.Range(0, dtTest.Columns.Count) 
