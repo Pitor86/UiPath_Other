@@ -200,6 +200,9 @@ ieColTest.Where(x => x.Value != String.Empty)							=> odfiltrowanie kolekcji z 
 If(IsNothing(arrTest), arrTest, If(arrTest.ToList.Contains(""), arrTest.ToList
 .Where(Function(x) Not x.Equals("")).ToList.ToArray, arrTest))					=> usunięcie pustego elementu
 
+arrTest = dictCity.AsEnumerable().Where(kvp => arrMiasta.Contains(kvp.Key))
+.Select(kvp => kvp.Value).ToArray()								=> utworzenie tablicy po zmapowaniu innej tablicy z kluczami słownika
+
 
 =DATA TABLE=
 dtTestTable.Rows(intLicznikFirm).Item("kod księgowego do kontaktu z klientem").ToString 	=> pobranie wartości komórki z podanego wiersza i kolumny
