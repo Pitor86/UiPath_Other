@@ -252,6 +252,9 @@ listColumnsOptional = dtTest.AsEnumerable().[Where](Function(x) Not x.IsNull("Op
 
 dtTest = dtTest.DefaultView.ToTable(false, listColumnsToCheck.ToArray())			=> odfiltrowanie tabeli po podanych kolumnach
 
+arrRequiredColumnNames = dtTest.Columns.Cast<DataColumn>().Where(x => !x.ToString()
+.Equals("Kolumna1")).Select(x => x.ToString()).ToArray()					=> tworzy tablicę z listą nazw obowiązkowych kolumn
+
 
 =LINQ=
 arrTest = dtTestExcel.Columns.Cast<DataColumn>().Where(x => !x.ToString().Equals("Status"))
