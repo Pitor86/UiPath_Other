@@ -282,6 +282,7 @@ dateEndDate = New DateTime(Now.Year,Now.Month,1).AddDays(-1)					=> poprzedni mi
 strStartDate = Now.Date.ToString("dd.MM.yyyy") 							=> dzisiejsza data
 strStartDate = System.DateTime.Now.ToShortTimeString 						=> obecna godzina, np. 21:05
 strCurrentTime = Now.ToString("HH:mm:ss tt")							=> obecna godzina z formatem AM/PM
+dateTest = #01/22/2024 03:40 AM#								=> literał daty
 
 
 =KONWERSJA DATY NA STRING=
