@@ -61,6 +61,10 @@ dateTest = DateTime.ParseExact(strFirstDataZawarcia, "yyyy.MM.dd", System
 boolInvalidDate = !DateTime.TryParseExact(strTestDate, "MM/dd/yyyy HH:mm:ss", null, System
 .Globalization.DateTimeStyles.None, out dateTempDate)						=> czy podana data ma nieprawidłwy format
 
+dateTest = DateTime.TryParseExact(strDateInput, "MM/dd/yyyy", null, System
+.Globalization.DateTimeStyles.None, out dateTest) ? DateTime.ParseExact(strDateInput, 
+"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture) : dateTest			=> czy podana data ma nieprawidłwy format, w wyniku otrzymamy albo datę albo 												=> DateTime.MinValue, którą można dalej sprawdzić
+
 ciPolishCulture = new CultureInfo("pl-PL")
 dateDataZawarcia = DateTime.Parse(strFirstDataZawarcia, ciPolishCulture)			=> aby móc przekonwertować datę: "24 października 2024" na datę
 
@@ -125,6 +129,7 @@ boolElementExists.ToString.Replace("True", "Tak").Replace("False", "Nie") 			=> 
 
 
 =STRING=
+strTestFolderName = new System.IO.DirectoryInfo(strTestPath).Name				=> zwraca nazwę folderu na końcu ścieżki
 StrConv(strTest, vbProperCase) 									=> użycie metody StrConv
 System.IO.Directory.GetFiles(Config("FolderWorkfiles").ToString)				=> pobranie listy z nazwami plików
 Path.GetFileName(strTestPath).ToString								=> pobranie nazwy pliku
@@ -183,12 +188,14 @@ arrTest.Concat({"BAZA WZORCOWA"}).ToArray							=> dodanie elementu
 arrTest1.Concat(arrTest2).ToArray								=> połączenie 2 tablic
 arrTest.ToList.GetRange(1, arrTest.Count-1).ToArray						=> odjęcie pierwszego elementu
 arrTest.Skip(1).ToArray()									=> usunięcie pierwszego elementu
+arrTest.SkipLast(1).ToArray()									=> usunięcie ostatniego elementu
 arrTest.ToList.GetRange(arrTest.IndexOf("d"), arrTest.Count-1).ToArray				=> odjęcie wskazanego elementu
 arrTest.GetLength(0).ToString									=> podanie długości tablicy (dla 0 wymiaru tutaj)
 arrTest.Any(Function(x) x.ToUpper.Contains(".LP."))						=> wyrażenie ANY
 arrTest.Where(Function(x) x.ToUpper.Contains(".LP.")).Count					=> wyrażenie WHERE
 arrTest.ToList.Contains("")									=> wyrażenie Contains
 arrTest.ToList.Where(Function(x) Not x.Equals("")).ToList.ToArray				=> usunięcie pustego elementu
+arrTest.Reverse().Skip(1).ToArray()								=> usunięcie ostatniego elementu ale odwrócenie kolejności
 
 listNew = Enumerable.Concat(listOne.AsEnumerable, listTwo.AsEnumerable).ToList			=> połączenie 2 list
 listTest = listTest.Union(listTest2).ToArray 							=> połączenie 2 list
@@ -321,7 +328,9 @@ tsTest = New TimeSpan(10,0,0)									=> nowy przedział godzinowy (tutaj 10h)
 
 =OBJECT=
 IsNothing(objTest)										=> użycie metody IsNothing
-arrTest = CType(objEmployeeDB, String())							=> konwersja obiektu na tablicę.
+arrTest = CType(objEmployeeDB, String())							=> konwersja obiektu na tablicę
+arrTest = ((IEnumerable)objTest).Cast<object>().Select(x => x.ToString()).ToArray()		=> konwersja obiektu na tablicę (C#)
+arrTest = ((Array)objTest).Cast<object>().Select(x => x.ToString()).ToArray()			=> konwersja obiektu na tablicę (C#)
 
 
 =DOUBLE=
