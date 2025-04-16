@@ -1,0 +1,474 @@
+﻿==========
+0) VBA - różne:
+
+=Zmieniam nr SAP ID Vendorow na liczbe=
+VendorRange = Evaluate(VendorRange.Address & "*1")
+
+==========
+1) UiPath - C# - wyrażenia:
+
+=TWORZENIE OBIEKTU=
+dictTest = new Dictionary<String, Object>()							=> utworzy słownik z 0 ilością elementów
+dictTest = new Dictionary<String, String>{{"Data\\Output", "*.xls?"}}				=> utworzy słownik z 1 podanym elementem
+dictTest["cos"].ToString()									=> pobranie wartości klucza "cos"
+dictTest("cos") = "1"										=> przypisanie wartości do klucza "cos"
+dictTest.Add											=> aby dodać nowy klucz, użyć "Invoke Method" z 2 argumentami lub "Add to" lub "Add Item"
+boolKeyExists = dictTest.Contains("Nazwa_Klucza")						=> sprawdzenie czy istnieje podany klucz w słowniku
+
+dictTest = new Dictionary<String, string[]>{{"Pekao", new string[]{"cos", "1"}}
+, {"Citi", new string[]{"cos", "2"}}}								=> utworzy słownik z 2 podanymi elementami
+
+arrTest = new string[4] 									=> utworzy tablicę 4 elementową, każdy element = null
+arrTest = new string[]{} 									=> utworzy tablicę z 0 ilością elementów
+arrTest = new string[]{"ID", "Zgłaszający"}							=> utworzy tablicę z 2 podanymi elementami
+
+listTest = new List<string>() = new List<string>{} 						=> utworzy listę z 0 ilością elementów
+listTest = new List<string>{"pozycja1", "pozycja2"}						=> utworzy listę z 2 podanymi elementami
+
+
+=WARUNKI W IF=
+!string.IsNullOrWhiteSpace(in_OrchestratorQueueFolder)
+SystemException == null
+SystemException != null && Convert.ToBoolean(Config["ShouldMarkJobAsFaulted"].ToString())
+!String.IsNullOrWhiteSpace(in_Environment) && in_Environment.Equals("prod") ? "Assets_Prod" : "Assets_Test"
+
+
+=PRZYPISANIA=
+strProcessName = Config["logF_BusinessProcessName"].ToString()
+strRowValue = dtExcelReport.Rows[intRowToUpdate][strValueColumnName]
+boolFound = dtExcelReport.AsEnumerable().Where(x => (x.Field<object?>(strIDColumnName)).ToString() == strIDToFind).Any()
+intCount = dtExcelReport.AsEnumerable().Where(x => (x.Field<object?>(strIDColumnName)).ToString() == strIDToFind).CopyToDataTable().Rows.Count
+intCount = dtExcelReport.AsEnumerable().Where(x => x.Field<string>("ID") == "3" && x.Field<string>("EarningsType") == earningsType).CopyToDataTable().Rows.Count
+listEmails = listEmails.AsEnumerable().Where(x => x.Subject.ToLower().Contains("test") && !x.Subject.ToLower().Contains("re:") && x.Attachments.Any()).ToList()
+
+
+=KONWERSJE=
+intNumber = Int32.Parse(jsonConfig["RS"]["DeleteFile"]["NR"].ToString())			=> konwersja String do Integer
+arrTest = JArray.Parse(jsonConfig["AE"].ToString()).ToObject<string[]>()			=> konwersja Json Array do Array
+boolTest = Convert.ToBoolean(Config["ShouldMarkJobAsFaulted"].ToString())			=> konwersja String do Boolean
+strTestChar = Convert.ToChar(60).ToString()							=> konwersja kodu ASCII do String (<)
+strJsonArr = JsonConvert.SerializeObject(arrTest)						=> konwersja Array do Json Array (string)
+
+
+=STRING=
+Aby przełamać linię (w VB _) użyć: @ przed String: @"jakiś tekst".
+
+
+=DATA=
+dateTest = DateTime.ParseExact(strFirstDataZawarcia, "yyyy.MM.dd", System
+.Globalization.CultureInfo.InvariantCulture)							=> konwersja Stringa na datę
+
+boolInvalidDate = !DateTime.TryParseExact(strTestDate, "MM/dd/yyyy HH:mm:ss", null, System
+.Globalization.DateTimeStyles.None, out dateTempDate)						=> czy podana data ma nieprawidłwy format
+
+dateTest = DateTime.TryParseExact(strDateInput, "MM/dd/yyyy", null, System
+.Globalization.DateTimeStyles.None, out dateTest) ? DateTime.ParseExact(strDateInput, 
+"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture) : dateTest			=> czy podana data ma nieprawidłwy format, w wyniku otrzymamy albo datę albo 												=> DateTime.MinValue, którą można dalej sprawdzić
+
+ciPolishCulture = new CultureInfo("pl-PL")
+dateDataZawarcia = DateTime.Parse(strFirstDataZawarcia, ciPolishCulture)			=> aby móc przekonwertować datę: "24 października 2024" na datę
+
+"[" + System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss:fff") + "]"				=> użycie daty UTC z milisekundami
+
+
+=SPLIT=
+strTest.Split('.', StringSplitOptions.None)							=> użycie metody Split
+
+
+=DATATABLE=
+dtTest = dtTest.AsEnumerable().Where(x => x.Field<DateTime>("Column14") >= DateTime
+.Now.AddDays(-1)).CopyToDataTable()								=> filtrowanie tabeli po dacie podanej w kolumnie
+
+dtTest.AsEnumerable().ToList().ForEach(x => x("ColumnNameOrIndex) = x("ColumnNameOrIndex").ToLower())	=> w InvokeCode, zmiana wartości podanej kolumny
+
+boolEmptyCellExists = dtTest.AsEnumerable().Any(x => string.IsNullOrEmpty(x.Field<string>("Status")))	=> czy są puste wiersze
+
+boolNewerDateExists = dtTest.AsEnumerable().Any(x => System.DateTime.ParseExact(x["Data od"]
+.ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) > dateDataWejscia)	=> czy jest nowsza data w tabeli
+
+
+==========
+2) UiPath - VB - wyrażenia:
+
+=QUEUE ITEM=
+TransactionItem.Reference.ToString 								=> odwołanie się do nazwy\reference QI
+TransactionItem.SpecificContent("Nazwa bazy").ToString 						=> odwołanie się do zawartości QI
+qiTest = new UiPath.Core.QueueItem(){Reference = "Test123", 
+SpecificContent = new Dictionary<String, Object>{{"strMiasto", "Krakow"}}}			=> inicjalizacja nowego QI
+
+
+=THROW=
+new ApplicationException(jsonConfig["AE"][1].ToString(), exception){Data = {{"ExType", "AE"}}}	=> wyrzucenie błędu aplikacyjnego
+new BusinessRuleException(jsonConfig["BE"][1].ToString()){Data = {{"ExType", "BE"}, 
+{"QIStatus", jsonConfig["Status"][0].ToString()}, {"QISyncStatus", "Oczekuje"}}}		=> wyrzucenie błędu biznesowego
+
+
+=CONFIG=
+Config("Mail_EmailOdbiorca").ToString 								=> odwołanie się do klucza\wpisu podanego w pliku Config
+
+
+=REGEX=
+intTest = Int32.Parse(System.Text.RegularExpressions.Regex.Match(strTest, "\\d+$")
+.Value.ToString())										=> użycie metody Regex w Assign (tu zwrócenie cyfr z końca podanego Stringa)
+
+boolUnderlineDigitExists = System.Text.RegularExpressions.Regex
+.IsMatch(strTest, "(_\\d+)(?=.pdf)", RegexOptions.IgnoreCase)					=> czy podany string kończy się _i cyfrą oraz występuje przed .pdf
+
+strNewTest = System.Text.RegularExpressions.Regex.Replace(strOldTest, "[a-zA-Z]+$"
+, colSomeRegExMatch.First.ToString().ToLower).Trim						=> użycie metody Regex Replace (zmiana ostatnich liter na małe-uzyskane w Match jako col)
+
+strNewTest = System.Text.RegularExpressions.Regex.Replace(strKwotaKupna
+.Split(".", StringSplitOptions.TrimEntries).Last(), "\\s", "")					=> usunięcie białych znaków w liczbie po kropce (zamiana na pusty String)
+
+strTrimString = System.Text.RegularExpressions.Regex
+.Replace(strTestString, "(^\\s+|\\s+$)", "").Trim().ToString()					=> usunięcie białych znaków z początku i końca Stringa
+
+
+=REPLACE=
+boolElementExists.ToString.Replace("True", "Tak").Replace("False", "Nie") 			=> użycie metody Replace
+
+
+=STRING=
+strTestFolderName = new System.IO.DirectoryInfo(strTestPath).Name				=> zwraca nazwę folderu na końcu ścieżki
+StrConv(strTest, vbProperCase) 									=> użycie metody StrConv
+System.IO.Directory.GetFiles(Config("FolderWorkfiles").ToString)				=> pobranie listy z nazwami plików
+Path.GetFileName(strTestPath).ToString								=> pobranie nazwy pliku
+strTest = String.Format("Nazywam się {0} i pochodzę z {1}", strImie, strMiasto)			=> formatowanie Stringa
+
+strTest = "Katowice Przychody z usług najmu" 							=> użycie metody Substring
+intStartIndex = strTest.IndexOf(" ") + 1 							=> użycie metody Substring
+intStopIndex = Strings.Len(strTest) 								=> użycie metody Substring
+strResultText = strTest.Substring(intStartIndex, intStopIndex-intStartIndex) 			=> użycie metody Substring
+strTest.Substring(0, strTest.Length-1) 								=> użycie metody Substring
+
+Strings.Right(str, Strings.Len(strTest) - Strings.Len(strTest2)) 				=> użycie metody Strings.Right
+strTest.ToString.Contains("test") 								=> użycie metody Contains
+strTest.Split("."c).Last.ToString.Length 							=> użycie metody Length
+Not String.IsNullOrEmpty(strTest) 								=> użycie metody String.IsNullOrEmpty
+strTest = Directory.GetFiles(strFolderDownloads,"Analytics*.xlsx").Last 			=> użycie metody *
+strStatus.Trim.TrimEnd(","c)									=> użycie metody Trim
+Left(strTest, 2)										=> użycie metody Left
+
+strCurrentFolderPath = Get Environment Variable: "CurrentDirectory"				=> pobranie ścieżki do folderu z kodem uruchomionego procesu
+strCurrentMachine = System.Environment.MachineName.ToString					=> pobranie nazwy maszyny wirtualnej (ta sama nazwa, co we Właściwości-Mój Komputer)
+
+Alt+0243 lub Alt+0234										=> z włączonym Num-Lock - ó, ę
+char.ConvertToUtf32("ó", 0) + " " + char.ConvertToUtf32("ę", 0)					=> konwersja z litery na kod w Ascii
+Convert.ToChar(243) + " " + Convert.ToChar(281)							=> konwersja z kodu w Ascii na literę
+
+strTestString.Replace("ą", "a").Replace("ć", "c").Replace("ę", "e").Replace("ł", "l")
+.Replace("ń", "n").Replace("ó", "o").Replace("ś", "s").Replace("ż", "z").Replace("ź", "z")	=> podmiana Polskich znaków
+
+If(intTest = 1,"wiersz", If(intTest > 1 And intTest < 5, "wiersze", If(intTest.ToString.EndsWith("12") Or intTest.ToString.EndsWith("13") Or intTest.ToString.EndsWith("14"), "wierszy", If(intTest.ToString.EndsWith("2") Or intTest.ToString.EndsWith("3") Or intTest
+.ToString.EndsWith("4"), "wiersze", "wierszy"))))						=> odmiana liczebnika przy logowaniu
+
+strTest.Split(".", StringSplitOptions.TrimEntries).Last().Length > 5 
+|| strTest.Split(",", StringSplitOptions.TrimEntries).Last().Length > 5				=> warunek czy liczba jako String ma > 5 miejsc po przecinku (format US i EUR)
+
+strTest = Math.Round(Decimal.Parse(System.Text.RegularExpressions.Regex
+.Replace(strTest, "\\s", "").Replace(",", ".")), 5).ToString().TrimEnd('0').Replace(".", ",")	=> zaokrąglenie liczby do 5 miejsc po przecinku i zmiana na format europejski
+
+
+=SPLIT=
+Split(strTest, ".")(0) 										=> 1-szy element z metody Split
+strTest.Split({vbLf},StringSplitOptions.RemoveEmptyEntries)(0) 					=> użycie metody Split po "Enter" - puste wpisy
+strTest.Split("\"c).Last 									=> ostatni element z metody Split
+row("Nazwa").ToString.Split(New String({strTest}), StringSplitOptions.None)(1).ToString.Trim 	=> użycie metody Split na wierszu po zmiennej
+strTest.Split({":"}, StringSplitOptions.RemoveEmptyEntries)					=> użycie metody Split
+strTest.Split({" ", "<", ">", ":"}, StringSplitOptions.RemoveEmptyEntries)			=> użycie metody Split po wielu znakach
+arrTest = strTest.Split(vbcrlf).Skip(1).ToArray							=> pominięcie 1-szego elementu z metody Split
+arrTest = arrTest.Take(arrTest.length - 1).ToArray						=> pominięcie ostatniego elementu z metody Split
+
+strTest = Split(strTest.Split(New String(){"BILL TO","DESCRIPTION"},StringSplitOptions
+.None)(1),Environment.NewLine)(5)								=> użycie metody Split po wielu wyrazach
+
+
+=ARRAY\LIST=
+arrTest.Concat({"BAZA WZORCOWA"}).ToArray							=> dodanie elementu
+arrTest1.Concat(arrTest2).ToArray								=> połączenie 2 tablic
+arrTest.ToList.GetRange(1, arrTest.Count-1).ToArray						=> odjęcie pierwszego elementu
+arrTest.Skip(1).ToArray()									=> usunięcie pierwszego elementu
+arrTest.SkipLast(1).ToArray()									=> usunięcie ostatniego elementu
+arrTest.ToList.GetRange(arrTest.IndexOf("d"), arrTest.Count-1).ToArray				=> odjęcie wskazanego elementu
+arrTest.GetLength(0).ToString									=> podanie długości tablicy (dla 0 wymiaru tutaj)
+arrTest.Any(Function(x) x.ToUpper.Contains(".LP."))						=> wyrażenie ANY
+arrTest.Where(Function(x) x.ToUpper.Contains(".LP.")).Count					=> wyrażenie WHERE
+arrTest.ToList.Contains("")									=> wyrażenie Contains
+arrTest.ToList.Where(Function(x) Not x.Equals("")).ToList.ToArray				=> usunięcie pustego elementu
+arrTest.Reverse().Skip(1).ToArray()								=> usunięcie ostatniego elementu ale odwrócenie kolejności
+
+listNew = Enumerable.Concat(listOne.AsEnumerable, listTwo.AsEnumerable).ToList			=> połączenie 2 list
+listTest = listTest.Union(listTest2).ToArray 							=> połączenie 2 list
+listFinal = listFirst.Concat(listSecond).ToList()						=> połączenie 2 list
+Invoke Method: - Target Type: Null - Target Object: listNew - Target Method: Sort		=> sortowanie listy
+arrTest.Any(x => string.IsNullOrEmpty(x))							=> sprawdzenie czy zawiera Nulle
+ieColTest.Where(x => x.Value != String.Empty)							=> odfiltrowanie kolekcji z pustych wpisów
+
+If(IsNothing(arrTest), arrTest, If(arrTest.ToList.Contains(""), arrTest.ToList
+.Where(Function(x) Not x.Equals("")).ToList.ToArray, arrTest))					=> usunięcie pustego elementu
+
+arrTest = dictCity.AsEnumerable().Where(kvp => arrMiasta.Contains(kvp.Key))
+.Select(kvp => kvp.Value).ToArray()								=> utworzenie tablicy po zmapowaniu innej tablicy z kluczami słownika
+
+
+=DATA TABLE=
+dtTestTable.Rows(intLicznikFirm).Item("kod księgowego do kontaktu z klientem").ToString 	=> pobranie wartości komórki z podanego wiersza i kolumny
+dtTestTable.DefaultView.ToTable(True, "Kontrahent", "NIP prefix", "NIP numer") 			=> usunięcie duplikatów po 3 kolumnach
+
+dtTestTable = dtTestTable.AsEnumerable().GroupBy(Function(a) Tuple.Create(a(“Baza danych”)
+.ToString, a(“Okres do”).ToString)).Select(Function(b) b.First).CopyToDataTable			=> usunięcie duplikatów po 2 kolumnach i zostawienie reszty kolumn
+dtTestTable IsNot Nothing AndAlso dtTestTable.Rows.Count > 0 					=> sprawdzenie czy tabela nie jest pusta
+dtTestTable.AsEnumerable.OrderBy(Function (r) r("Kod klienta").ToString).CopyToDataTable	=> sortowanie tabeli po wskazanej kolumnie
+dtTestTable.Select("[Oddział1]='Katowice'").CopyToDataTable					=> użycie metody Select
+dtTestTable.Select("[rop_opis] not like '%Firma%' or [rop_operator] like '%ADMIN%'")		=> użycie metody Select
+dtTestTable = dtTestTable.Select("[Jakas kolumna] = 'Yes'").CopyToDataTable			=> użycie metody Select
+intRowNUmber = dtTest.AsEnumerable().Max(Function (x) CInt(x("Column Date")))			=> wyznaczenie numeru wiersza z najnowszą datą
+dtTest = dtTest.AsEnumerable().Take(5).CopyToDataTable()					=> pobranie z tabeli 5 wierszy
+dtTest = dtTest.AsEnumerable().Skip(14).CopyToDataTable()					=> usunięcie pierwszych 14 wierszy z tabeli
+
+dtTestTable = dtTestTable.Select("[Jakas kolumna] = 'Yes' 
+AND [Inna kolumna] > 200 AND NOR([Jeszcze inna] = 1)").CopyToDataTable				=> użycie metody Select
+
+If(dtTestTable.Select("[Jakas kolumna] = 'Yes'").Any, dtTestTable.Select("[Jakas kolumna] = 'Yes'")
+.CopyToDataTable, dtTestTable.Clone)								=> użycie metody Select
+
+dtTestTable.AsEnumerable().Where(Function(x) x("Status").ToString = "")
+.CopyToDataTable.Rows.Count									=> zliczenie pustych wierszy
+
+dtTestTable.AsEnumerable().Where(Function(x) x("Status").ToString
+.Equals("",StringComparison.OrdinalIgnoreCase)).CopyToDataTable.Rows.Count			=> zliczenie pustych wierszy
+
+strTestTableColumnValues = String.Join(";"c, dtTestTable
+.AsEnumerable().Select(Function(x) x.Field(Of String)("Jakaś kolumna")).ToArray())		=> połączenie wierszy podanej kolumny do Stringa
+
+dtTestTable.Rows.Cast(Of DataRow)().Where(Function(row) Not row.ItemArray.All(Function(field) field.Equals("")) And Not row("Operator")
+.ToString.Equals("#")).CopyToDataTable								=> usunięcie pustych wierszy oraz wierszy ze wskazanej kolumny
+
+dtPogrupowanaTabela = (From p In dtTabelaWejsciowa.AsEnumerable() Group By col1 = p("Contract Number").ToString, col2 = p("Currency").
+ToString, col3 = p("Part Number").ToString Into Group Select dtPogrupowanaTabela.Rows.Add({col1, col2, col3, Group
+.sum(Function(r) Convert.ToDouble(r("Value").ToString))})).CopyToDatatable			=> grupowanie z sumowaniem
+
+If: dtTest.Columns.Cast(Of DataColumn).ToList()
+.FindIndex(Function (x) x.ColumnName.Contains("Szukana_Nazwa")) <> -1				=> odszukanie kolumny z określoną nazwą
+
+listColumnsToCheck = dtTest.AsEnumerable().[Select](Function(x) x.Field(Of String)("Required"))
+.ToList()											=> tworzy z kolumny "Required" listę
+
+listColumnsOptional = dtTest.AsEnumerable().[Where](Function(x) Not x.IsNull("Optional"))
+.[Select](Function(x) x.Field(Of String)("Optional")).ToList()					=> tworzy z kolumny "Optional" listę i pomija puste wiersze
+
+dtTest = dtTest.DefaultView.ToTable(false, listColumnsToCheck.ToArray())			=> odfiltrowanie tabeli po podanych kolumnach
+
+arrRequiredColumnNames = dtTest.Columns.Cast<DataColumn>().Where(x => !x.ToString()
+.Equals("Kolumna1")).Select(x => x.ToString()).ToArray()					=> tworzy tablicę z listą nazw obowiązkowych kolumn
+
+
+=LINQ=
+arrTest = dtTestExcel.Columns.Cast<DataColumn>().Where(x => !x.ToString().Equals("Status"))
+.Select(x => x.ToString()).ToArray()								=> Pobranie nazw kolumn z tabeli
+
+arrMissingColumnNames = 
+(from c in Enumerable.Range(0, dtTest.Columns.Count) 
+where string.IsNullOrEmpty(string.Join("", Enumerable.Range(intLoopCounter, 1)
+.Select(r => dtTest.Rows[r][c])).ToString().Trim()) 
+select dtTest.Columns[c].ColumnName).ToArray()	=> Zwrócenie tablicy z nazwami kolumn, w których są puste komórki. Użyć w For Each Row in Data Table z podaną zmienną: intLoopCounter
+
+
+=ADRES KOMÓRKI W EXCELU=
+"A"+(full_data_table.Rows.IndexOf(row)+1).ToString+":"+(Convert.ToChar(full_data_table.Columns.Count+64)).ToString+(full_data_table.Rows.IndexOf(row)+1).ToString
+
+
+=GENERIC VALUE=
+genTest = New GenericValue(strTest)								=> konwersja String na Generic
+(String.IsNullorEmpty(genPracownikEmail) OrElse genPracownikEmail = "" OrElse genPracownikEmail = "0")	=> sprawdzenie czy wartość jest pusta
+
+
+=USTAWIENIE DATY=
+dateStartDate = New DateTime(Now.AddMonths(-1).Year,Now.AddMonths(-1).Month,1) 			=> poprzedni miesiąc, pierwszy dzień
+dateEndDate = New DateTime(Now.Year,Now.Month,1).AddDays(-1)					=> poprzedni miesiąc, ostatni dzień
+strStartDate = Now.Date.ToString("dd.MM.yyyy") 							=> dzisiejsza data
+strStartDate = System.DateTime.Now.ToShortTimeString 						=> obecna godzina, np. 21:05
+strCurrentTime = Now.ToString("HH:mm:ss tt")							=> obecna godzina z formatem AM/PM
+dateTest = #01/22/2024 03:40 AM#								=> literał daty
+
+
+=KONWERSJA DATY NA STRING=
+strTestData = Convert.ToDateTime(CurrentRow.Item("Data wysłania").ToString).ToString("yyyy/MM/dd")	=> konwersja daty na String
+strTestData = Convert.ToDateTime(Row("Data kursu waluty")).ToString("yyyyMMdd")			=> konwersja daty na String
+strTestData = New DateTime(Now.Year,Now.Month,1).AddDays(-1).ToString("MM")			=> konwersja daty na String
+strTestData = Convert.ToDateTime(strDocelowyRok + "-01-01").ToString("yyyyMM")			=> konwersja daty na String
+strDate = TimeZoneInfo.ConvertTimeFromUtc(dateEndDate, TimeZoneInfo
+.FindSystemTimeZoneById("Pacific Standard Time")).ToString("yyyy-MM-dd")			=> konwersja czasu z UTC-8 na uniwersalny UTC
+strTime = TimeZoneInfo.ConvertTimeFromUtc(dateEndDate, TimeZoneInfo
+.FindSystemTimeZoneById("Pacific Standard Time")).ToString("HH:mm:ss")				=> konwersja czasu z UTC-8 na uniwersalny UTC
+
+
+=KONWERSJA STRING NA DATE=
+dateTestData = DateTime.Parse("04/16/2023")							=> konwersja Stringa na datę
+dateTestData = DateTime.ParseExact("16/04/2023", "dd/MM/yyyy", CultureInfo.InvariantCulture)	=> konwersja Stringa na datę
+dateCurrentTime = DateTime.ParseExact(strCurrentTime, "HH:mm:ss tt", System.Globalization
+.CultureInfo.InvariantCulture)									=> konwersja Stringa na godzinę
+dateTestData = CDate(strTestData)								=> konwersja Stringa na datę
+dateTestData = CDate("01/11/2023 01:00:05")							=> konwersja Stringa na datę
+dateTestData = Convert.ToDateTime("2016-01-30")							=> konwersja Stringa na datę
+longDateDiff = DateDiff(DateInterval.Day, dateTest1, dateTest2)					=> różnica pomiędzy datami
+
+dateTestData = DateTime.ParseExact(strTestData, "dd/MM/yyyy HH:mm:ss", System
+.Globalization.CultureInfo.InvariantCulture)							=> konwersja Stringa na datę
+
+dateTestData = DateTime.ParseExact("16/04/2023", {"dd/MM/yyyy", "dd.MM.yyyy"}, CultureInfo
+.InvariantCulture, DateTimeStyles.None)								=> konwersja Stringa na datę
+
+
+=TIMESPAN=
+ts5sec = TimeSpan.FromMilliseconds(int5Sec)							=> konwersja liczby 5000 na zmienną typu Time Span
+ts5sec.ToString("hh\:mm\:ss")									=> formatowanie
+tsTest = New TimeSpan(10,0,0)									=> nowy przedział godzinowy (tutaj 10h)
+
+
+=OBJECT=
+IsNothing(objTest)										=> użycie metody IsNothing
+arrTest = CType(objEmployeeDB, String())							=> konwersja obiektu na tablicę
+arrTest = ((IEnumerable)objTest).Cast<object>().Select(x => x.ToString()).ToArray()		=> konwersja obiektu na tablicę (C#)
+arrTest = ((Array)objTest).Cast<object>().Select(x => x.ToString()).ToArray()			=> konwersja obiektu na tablicę (C#)
+
+
+=DOUBLE=
+dblTest = Double.Parse(strTest)									=> konwersja String na Double
+
+
+=STOPER=
+watchStoper.Elapsed.ToString("hh\:mm\:ss")							=> zalogowanie zmiennej Stopwatch
+
+
+=TRYPARSE=
+boolTest = Double.TryParse("12.34", 0)								=> sprawdza, czy da się wykonać konwersję
+
+Invoke Method: - Target Type: System.Double - Target Object: (nic) - Target Method: TryParse	=> konwersja String na Double
+- Parameters: - in, String, strNumberToConvert - out, Double, dblResult
+- Result = boolMethodResult
+
+Not DateTime.TryParseExact(CurrentRow("Kolumna z datą").ToString(), "M/d/yyyy", Nothing, DateTimeStyles.None, dateTempDate)
+- Podajemy: string z datą, format daty, provider (np. System.Globalization.CultureInfo), 
+styles (dodatkowe formatowanie daty), result (zmienna z wynikiem)				=> jeżeli zwróci True (Not False), to data podana we wierszu, nie jest prawidłową datą.
+
+
+=OUTLOOK MAIL=
+StrConv(Split(strEmailTo, ".")(0), vbProperCase) + ", " + vbCrLf + vbCrLf 			=> pobranie imienia z adresu Email pracownika
+System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Split(strEmailTo, ".")(0)) + ","	=> pobranie imienia z adresu Email pracownika - aktualna wersja
+
+Jet Basics - Filter Syntax, musi być Exchange w wersji 2010 SP1 lub nowszy			=> filtrowanie e-maili, : - zawiera, := - równa się
+"[subject]='IDs Request'"									=> filtrowanie e-maili
+"Subject: " + "Temat wiadomości zawiera" + " AND From " + "noreply@test.pl" + 
+" AND Received: >= 6/13/2024"									=> filtrowanie e-maili
+
+CurrentMail.Headers["DateReceived"].ToString()							=> data otrzymania z obiektu wiadomości
+CurrentMail.Headers["Message-ID"].ToString()							=> unikatowy numer ID z obiektu wiadomości, po którym można filtrować w Get Emails
+CurrentMail.Sender.Address.ToString()								=> adres nadawcy
+CurrentMail.SenderEmailAddress()								=> adres nadawcy
+
+
+=RaiseAlert=
+Aktywność wysyła maila w imieniu "Orchestratora" na adres(y) Email podane w Orchestratorze	=> wysyłka wiadomości "on behalf of Orchestrator"
+
+
+=PASSWORD ENCODED=
+strPassEncoded = (new System.Net.NetworkCredential(string.Empty, sstrPassword).Password).ToString()	=> odkodowanie Secure Stringa z hasłem na Stringa
+sstrTest = (new System.Net.NetworkCredential("", "myString")).SecurePassword			=> zakodowanie String do Secure Stringa
+
+
+=ENUMERABLE=
+For Each => Enumerable.Range(1, intNumberOfDaysInMonth)						=> pętla po obiekcie Range
+
+
+=JSON=
+objTest = JsonConvert.DeserializeObject(strJsonResponse)					=> deserialize JSON, zamiana String na JSON 
+strTest = JsonConvert.SerializeObject(dtTest)							=> serialize JSON, zamiana Tabeli na JSON
+objJSONArray = CType(objJSON("value"), JArray)							=> utworzenie tabeli JArray z obiektu JSON, po której można iterować
+arrTest = JArray.Parse(jsonConfig("AE").ToString).ToObject(Of String())				=> utworzenie tablicy String z obiektu JToken/JArray
+strJsonArray = "[\"12345\"]"									=> String jako JArray, na nim można wykonać deserialize do zwykłego Array
+
+
+=TYPY DANYCH=
+Array - musi być podany wymiar z góry:								=> tablica
+	- Typ danych: System.String[] 								=> typ danych
+	- Init: New String(){}									=> init
+
+List - nie musi być podanego rozmiaru z góry:							=> lista
+	- Typ danych: System.Collections.Generic.List<System.String>				=> typ danych
+	- Init: New List(Of String)								=> init
+	- Init: New List(Of String)(New String() {"abc"}, {"123"})
+
+List 2 - nie musi być podanego rozmiaru z góry:							=> lista
+	- Typ danych: System.Collections.Generic.ICollection<System.String>			=> typ danych
+	- Init: New List(Of String)								=> init
+
+List 3 - nie musi być podanego rozmiaru z góry:							=> lista
+	- Typ danych: System.Collections.Generic.IEnumerable<System.Object>			=> typ danych
+	- Init: New List(Of Object)								=> init
+
+Dictionary - nie musi być podanego rozmiaru z góry:						=> słownik
+	- Typ danych: System.Collections.Generic.Dictionary(of string)(string)			=> typ danych
+	- Init: New Dictionary(of String, String) from {{"x", "y"}, {"z", "p"}}			=> init
+	- Init: New Dictionary(of String(), DataTable) From {{{"Oddział", "Nazwa Oddziału"}, Nothing}}
+
+
+=TYPY DANYCH=
+DataTable => System.Data.DataTable								=> tabela
+DateTime => System.DateTime									=> data
+Generic => UiPath.Core.GenericValue								=> generyczny
+Integer32 => System.Int32									=> short
+Integer64 => System.Int64									=> long
+Double => System.Double										=> double
+TimeSpan => System.TimeSpan									=> time Span
+Json => Newtonsoft.Json.Linq.JObject								=> Json
+
+
+=TIMEOUTS=
+w pliku Config wpis: jsonTimeoutsExceptions							=> Values for activities Timeouts, Delays, Retry Scopes, Exceptions
+Odwołanie w kodzie np: CInt(jsonConfig("TO")("Medium").ToString)
+
+{"TO":{"VShort":2, "Short":4, "Medium":16, "Long":64, "VLong":256},
+"TOms":{"VShort":2000, "Short":4000, "Medium":16000, "Long":64000, "VLong":256000},
+"DEL":{"D1":1, "D2":2, "D3":3, "D4":4, "D6":6, "WaitForQueue":45},
+"RS":{"FoldersCreateDelete":{"NR":3, "TS":4}, "ExcelReportProcess":{"NR":3, "TS":6}, "OutlookGetEmails":{"NR":3, "TS":8}, "AppXYLogin":{"NR":2, "TS":6}, "EdgeLoadingPage":{"NR":9, "TS":3}},
+"SE":["SE00: Critical error while reading Config file.", 
+"SE01: Critical error while initializing the environment."], 
+"AE":["AE00: Unexpected system exception.", 
+"AE01: Robot couldn't login to AppXY.", 
+"AE02: Robot couldn't logout from AppXY."], 
+"BE":["BE00: No input data found in: {0} to process."],
+"Status": ["OK", "Błąd - wprowadź pozycję ręcznie."]}
+
+
+*Use assets for variables that are likely to change and be used many times, shared between Robots. 
+	E.g. Email address for business, Email subjects & bodies, WebApp Url.
+	Orchestrator folder path provided in Assets sheet in Config file: PROD/SOKKRegister
+**Use the configuration file to share constants that are shared across workflows.
+
+
+=DEV=
+Config["FolderName"].ToString()									=> Logowanie wartości z pliku Config
+Int32.Parse(jsonConfig["TOms"]["Medium"].ToString())						=> Logowanie wartości z pliku jsonConfig dla TOms
+Int32.Parse(jsonConfig["RS"]["DeleteFiles"]["NR"].ToString())					=> Logowanie wartości z pliku jsonConfig dla RS - NR
+TimeSpan.FromSeconds(Int32.Parse(jsonConfig["RS"]["DeleteFiles"]["TS"].ToString()))		=> Logowanie wartości z pliku jsonConfig dla RS - TS
+"=>Error: " + exception.Message + Environment.NewLine + "=>At: " + exception.Source + "."	=> Logowanie błędu
+
+
+=ASSISTANT=
+Argumenty in podajemy bez "" (np. Nazwa_Kolejki)
+
+Uruchomienie Robota z Task Scheduler (Harmonogram zadań):
+- tworzymy skrót do procesu w UiPath Assistant-3 kropki na Nazwa_Procesu-Send to desktop,
+- tworzymy wykonawczy plik Nazwa_Procesu.bat o treści: start C:\Users\..\Desktop\Nazwa_Procesu.lnk
+- otwieramy harmonogram zadań-Action-Create Basic Task-Ustawiamy trigger Nazwa_Procesu i podajemy plik wykonawczy Nazwa_Procesu.bat.
+
+==========
+Dokumentacja Uipath - https://docs.uipath.com/
+
+Moje Templatki:
+https://github.com/Pitor86/ReframeworkTemplateC.git
+https://github.com/Pitor86/FlowchartTemplateC.git
+https://github.com/Pitor86/UiPath_Other.git
+
+
