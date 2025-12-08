@@ -1,0 +1,447 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="734.4,627.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Główny moduł." DisplayName="Main" sap:VirtualizedContainerService.HintSize="512,199.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap2010:Annotation.AnnotationText="Podmienia Email w plikach Config." DisplayName="Replace Configs Email" sap:VirtualizedContainerService.HintSize="449.6,79.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="strNewEmail" />
+        <Variable x:TypeArguments="x:String" Name="strOldEmail" />
+        <Variable x:TypeArguments="x:Int32" Name="intCounterMain" />
+        <Variable x:TypeArguments="x:String" Name="strTotalFilesToCheck" />
+        <Variable x:TypeArguments="x:String" Name="strTargetConfigsFolder" />
+        <Variable x:TypeArguments="s:String[]" Default="[New String(){}]" Name="arrTargetProcessesToCheck" />
+        <Variable x:TypeArguments="x:String" Name="strGivenAnswer" />
+        <Variable x:TypeArguments="x:Boolean" Name="boolStopProcess" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message - 1" sap:VirtualizedContainerService.HintSize="449.6,182.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Start - Replace Configs Email&quot;]" />
+      <Sequence sap2010:Annotation.AnnotationText="Ustaw zmienne." DisplayName="Set Vars" sap:VirtualizedContainerService.HintSize="449.6,96" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:MultipleAssign sap2010:Annotation.AnnotationText="Dane wejściowe." DisplayName="Multiple Assign - Email Data" sap:VirtualizedContainerService.HintSize="433.6,203.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[strOldEmail]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">michal.olesinski@meritoros.pl</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[strNewEmail]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">piotr.gajewski@meritoros.pl</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:MultipleAssign>
+        <Assign DisplayName="Assign - arrTargetProcessesToCheck" sap:VirtualizedContainerService.HintSize="433.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="s:String[]">[arrTargetProcessesToCheck]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="s:String[]">[{"Config_AAA_Unattended_Robot_Tests.xlsx", "Config_Analiza_Modulow_Optimy.xlsx", "Config_Archiwizacja_Dokumentow_Ksiegowych1.xlsx", "Config_Archiwizacja_Dokumentow_Sprzedaz_Zakup.xlsx", "Config_Czyszczenie_List_Sharepoint.xlsx", "Config_Dodawanie_Dostepow_Optima.xlsx", "Config_Dokumenty_Nierozliczone.xlsx", "Config_Filtrowanie_Raportu_Zapytan.xlsx", "Config_Generowanie_LPZUS_Wlascicieli.xlsx", "Config_Generowanie_Wysylka_Potwierdzen_Sald.xlsx", "Config_Haslowanie_Wysylka_Kwitkow_Wyplat.xlsx", "Config_Haslowanie_Wysylka_PIT11_IMIR.xlsx", "Config_Naliczanie_Amortyzacji.xlsx", "Config_Obsluga_Noreply.xlsx", "Config_Pobieranie_Raportu_Zapytan.xlsx", "Config_Pobieranie_UPO.xlsx", "Config_Raport_Czasu_Pracy_Robotow.xlsx", "Config_Raport_Pracy_Robotow.xlsx", "Config_Raport_Zawartosci_Bot_Screenshots.xlsx", "Config_Uruchomienie_Wstrzymanych_Robotow.xlsx", "Config_Utworzenie_Kopii_Robotow.xlsx", "Config_Wprowadzanie_FV_Sprzedaz_Zakup.xlsx", "Config_Wysylka_Informacji_O_Wynikach.xlsx", "Config_Wysylka_Informacji_O_ZUS.xlsx"}]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:LogMessage DisplayName="Log Message - 2" sap:VirtualizedContainerService.HintSize="433.6,182.4" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Szukam plików 'Config' dla procesów: &quot; + vbCrLf + &#xA;String.Join(vbCrLf, arrTargetProcessesToCheck) + vbCrLf + &#xA;&quot;Łącznie procesów do sprawdzenia: &quot; + arrTargetProcessesToCheck.Count.ToString]" />
+        <ui:LogMessage DisplayName="Log Message - 3" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Podmieniam: &quot; + vbCrLf + &quot;- Stary Email: &quot; + strOldEmail + &quot; na:&quot; + vbCrLf + &quot;- Nowy Email: &quot; + strNewEmail]" />
+      </Sequence>
+      <TryCatch sap2010:Annotation.AnnotationText="Próba zaczytania zmiennej ze ścieżką do folderu z plikami Config." DisplayName="Try Catch - Browse For Folder" sap:VirtualizedContainerService.HintSize="449.6,124.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <TryCatch.Try>
+          <ui:SelectFolder sap2010:Annotation.AnnotationText="Podać folder z plikami Config, np. &quot;D:\Uipath\Bot_Configs&quot;." DisplayName="Browse For Folder - strTargetConfigsFolder" sap:VirtualizedContainerService.HintSize="334,121" sap2010:WorkflowViewState.IdRef="SelectFolder_1" SelectedFolder="[strTargetConfigsFolder]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SelectFolder>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </ActivityAction.Argument>
+              <Assign DisplayName="Assign - boolStopProcess" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[boolStopProcess]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+      <If sap2010:Annotation.AnnotationText="Czy kończyć proces?" Condition="[boolStopProcess]" DisplayName="If - boolStopProcess" sap:VirtualizedContainerService.HintSize="449.6,96" sap2010:WorkflowViewState.IdRef="If_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,252" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message - 4" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Nie podano folderu z plikami 'Config' - kończę pracę&quot;]" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="800,3746.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Delay DisplayName="Delay - 2s" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="737.6,130.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Buttons="Ok" Caption="Dane wejściowe" DisplayName="Message Box - Dane wejściowe" sap:VirtualizedContainerService.HintSize="738,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Robot przeszuka podany folder: &quot; + vbCrLf + &#xA;strTargetConfigsFolder + vbCrLf + vbCrLf +&#xA;&quot;Procesy do sprawdzenia: &quot; + vbCrLf +&#xA;String.Join(vbCrLf, arrTargetProcessesToCheck) + vbCrLf + vbCrLf +&#xA;&quot;Łącznie procesów do sprawdzenia: &quot; + arrTargetProcessesToCheck.Count.ToString]" TopMost="True" />
+            <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="Potwierdź dane" ChosenButton="[strGivenAnswer]" DisplayName="Message Box - strGivenAnswer" sap:VirtualizedContainerService.HintSize="738,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Podmieniam: &quot; + vbCrLf + &#xA;&quot;- Stary Email: &quot; + strOldEmail + &quot; na:&quot; + vbCrLf + &#xA;&quot;- Nowy Email: &quot; + strNewEmail + vbCrLf + vbCrLf +&#xA;&quot;Czy powyższe dane się zgadzają?&quot;]" TopMost="True" />
+            <If sap2010:Annotation.AnnotationText="Jaka odpowiedź?" Condition="[strGivenAnswer = &quot;Yes&quot;]" DisplayName="If - strGivenAnswer = &quot;Yes&quot;" sap:VirtualizedContainerService.HintSize="738,3360" sap2010:WorkflowViewState.IdRef="If_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="704,3147" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign - strTotalFilesToCheck" sap:VirtualizedContainerService.HintSize="662,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[strTotalFilesToCheck]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[System.IO.Directory.GetFiles(strTargetConfigsFolder, "*.xlsx").GetLength(0).ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message - 5" sap:VirtualizedContainerService.HintSize="662,141" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[If(strTotalFilesToCheck = &quot;0&quot;, &quot;Nie znalazłem żadnych plików '.xlsx', we wskazanym folderze&quot;, &quot;Znalazłem: &quot; + strTotalFilesToCheck + &quot; plików '.xlsx' we wskazanym folderze&quot;)]" />
+                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intCounterMain]" DisplayName="For Each - System.IO.Directory.GetFiles(strTargetConfigsFolder, &quot;*.xlsx&quot;)" sap:VirtualizedContainerService.HintSize="662,2756" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[System.IO.Directory.GetFiles(strTargetConfigsFolder, &quot;*.xlsx&quot;)]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="CurrentConfigFile" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="628,2539" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="sd:DataTable" Name="dtCurrentConfigTable" />
+                            <Variable x:TypeArguments="x:Int32" Name="intEmailEntryRowIndex" />
+                            <Variable x:TypeArguments="s:String[]" Name="arrProcessName" />
+                            <Variable x:TypeArguments="x:String" Name="strCurrentEmail" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Assign - arrProcessName" sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:String[]">[arrProcessName]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="s:String[]">[CurrentConfigFile.Split("\"c)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:LogMessage DisplayName="Log Message - 6" sap:VirtualizedContainerService.HintSize="586,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Sprawdzam plik &quot; + (intCounterMain + 1).ToString + &quot;/&quot; + strTotalFilesToCheck + &quot;: &quot; + arrProcessName(arrProcessName.Length - 1)]" />
+                          <If sap2010:Annotation.AnnotationText="Czy procesowany plik nie znajduje się na liście podanych procesów?" Condition="[Not arrTargetProcessesToCheck.ToList.Contains(arrProcessName(arrProcessName.Length - 1))]" sap:VirtualizedContainerService.HintSize="586,2148" sap2010:WorkflowViewState.IdRef="If_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <Sequence sap:VirtualizedContainerService.HintSize="376,294" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message - 7" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Pomijam plik - poza podaną listą&quot;]" />
+                                <ui:Continue sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence sap:VirtualizedContainerService.HintSize="552,1935" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Odczytanie pliku Config." DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="510,201" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[CurrentConfigFile]">
+                                  <ui:ExcelApplicationScope.Body>
+                                    <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                      </ActivityAction.Argument>
+                                      <ui:ExcelReadRange AddHeaders="True" DataTable="[dtCurrentConfigTable]" DisplayName="Read Range - dtCurrentConfigTable" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Settings">
+                                        <ui:ExcelReadRange.Range>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <Literal x:TypeArguments="x:String" Value="" />
+                                          </InArgument>
+                                        </ui:ExcelReadRange.Range>
+                                      </ui:ExcelReadRange>
+                                    </ActivityAction>
+                                  </ui:ExcelApplicationScope.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:ExcelApplicationScope>
+                                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Wyszukanie Emaila." DataTable="[dtCurrentConfigTable]" DisplayName="Lookup Data Table - strCurrentEmail, intEmailEntryRowIndex" sap:VirtualizedContainerService.HintSize="510,323" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Name" LookupValue="Mail_EmailOpiekun" RowIndex="[intEmailEntryRowIndex]" TargetColumnName="Value">
+                                  <ui:LookupDataTable.CellValue>
+                                    <OutArgument x:TypeArguments="x:String">[strCurrentEmail]</OutArgument>
+                                  </ui:LookupDataTable.CellValue>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LookupDataTable>
+                                <Assign DisplayName="Assign - intEmailEntryRowIndex" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intEmailEntryRowIndex]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intEmailEntryRowIndex + 2]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:LogMessage DisplayName="Log Message - 8" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Numer wiersza z adresem Email: &quot; + If(Not String.IsNullOrEmpty(strCurrentEmail), intEmailEntryRowIndex.ToString, &quot;-&quot;)]" />
+                                <If sap2010:Annotation.AnnotationText="Czy znalazłem adres Email i czy to jest podany\stary Email." Condition="[Not String.IsNullOrEmpty(strCurrentEmail) AndAlso strCurrentEmail.ToLower = strOldEmail]" sap:VirtualizedContainerService.HintSize="510,940" sap2010:WorkflowViewState.IdRef="If_2">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,498" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message - 9" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Podmieniam adres 'Mail_EmailOpiekun' na: &quot; + strNewEmail]" />
+                                      <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Zapisanie pliku Config." DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,229" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[CurrentConfigFile]">
+                                        <ui:ExcelApplicationScope.Body>
+                                          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                            <ActivityAction.Argument>
+                                              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                            </ActivityAction.Argument>
+                                            <ui:ExcelWriteCell Cell="[&quot;B&quot; + intEmailEntryRowIndex.ToString]" DisplayName="Write Cell - strNewEmail" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Settings" Text="[strNewEmail]" />
+                                          </ActivityAction>
+                                        </ui:ExcelApplicationScope.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelApplicationScope>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message - 10" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Pomijam plik - adres 'Mail_EmailOpiekun' jest poprawny&quot;]" />
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEach>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - 11" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Proces przerwany przez użytkownika&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </If.Else>
+      </If>
+      <ui:LogMessage DisplayName="Log Message - 12" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Stop - Replace Configs Email&quot;]" />
+    </Sequence>
+  </Sequence>
+</Activity>

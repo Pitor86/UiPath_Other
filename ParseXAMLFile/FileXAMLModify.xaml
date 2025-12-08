@@ -1,0 +1,358 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FileXAMLModify" this:FileXAMLModify.intLogMsgStartCounter="1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sx="clr-namespace:System.Xml;assembly=System.Private.Xml" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="listXAMLFound" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="intLogMsgStartCounter" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>FileXAMLModify_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Xml.XPath</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Private.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xml.XPath.XDocument</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Based on provided XAML files list, check if they contain Log Message Activity and change their names." DisplayName="FileXAMLModify" sap:VirtualizedContainerService.HintSize="837.2,1119.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strTargetXAML" />
+      <Variable x:TypeArguments="sx:XmlDocument" Name="XmlDiagramTree">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="sx:XmlDocument" ExpressionText="new XmlDocument()" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sx:XmlNamespaceManager" Name="XmlSelectorsNamespaceManager">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="sx:XmlNamespaceManager" ExpressionText="new XmlNamespaceManager(XmlDiagramTree.NameTable)" />
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - 20" sap:VirtualizedContainerService.HintSize="518.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Start - File XAML Modify&quot;]" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop through XAML files." DisplayName="For Each - listXAMLFound" sap:VirtualizedContainerService.HintSize="518.4,788.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[listXAMLFound]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="CurrentXAML_File" />
+          </ActivityAction.Argument>
+          <Sequence sap2010:Annotation.AnnotationText="Modify XAML file." DisplayName="Process XAML File" sap:VirtualizedContainerService.HintSize="483.2,600" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message - 21" sap:VirtualizedContainerService.HintSize="449.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Checking: &quot; + System.IO.Path.GetFileName(CurrentXAML_File)]" />
+            <Sequence sap2010:Annotation.AnnotationText="Odczytanie pliku XAML i deserializacja go do obiektu." DisplayName="Read XAML" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ReadTextFile File="{x:Null}" Content="[strTargetXAML]" DisplayName="Read Text File - CurrentXAML_File" FileName="[CurrentXAML_File]" sap:VirtualizedContainerService.HintSize="416,112.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+              <InvokeMethod DisplayName="Create XML tree - XmlDiagramTree" sap:VirtualizedContainerService.HintSize="416,157.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="LoadXml">
+                <InvokeMethod.TargetObject>
+                  <InArgument x:TypeArguments="sx:XmlDocument">[XmlDiagramTree]</InArgument>
+                </InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="x:String">[strTargetXAML]</InArgument>
+              </InvokeMethod>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Dodanie przestrzeni nazw wraz z definicjami. Należy podawać nazwę elementu oraz jego definicję =&gt; obydwie informacje są w nagłówku analizowanego pliku XAML.&#xA;&#xA;&quot;ui&quot; =&gt; &quot;http://schemas.uipath.com/workflow/activities&quot;&#xA;&quot;x&quot; =&gt; &quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#xA;&quot;sap2010&quot; =&gt; &quot;http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation&quot;" DisplayName="Add Namespace" sap:VirtualizedContainerService.HintSize="449.6,199.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <InvokeMethod DisplayName="Add UI namespace to manager - XmlSelectorsNamespaceManager" sap:VirtualizedContainerService.HintSize="416,166.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="AddNamespace">
+                <InvokeMethod.TargetObject>
+                  <InArgument x:TypeArguments="sx:XmlNamespaceManager">[XmlSelectorsNamespaceManager]</InArgument>
+                </InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="x:String">ui</InArgument>
+                <InArgument x:TypeArguments="x:String">http://schemas.uipath.com/workflow/activities</InArgument>
+              </InvokeMethod>
+              <InvokeMethod DisplayName="Add UI namespace to manager - XmlSelectorsNamespaceManager" sap:VirtualizedContainerService.HintSize="416,166.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="AddNamespace">
+                <InvokeMethod.TargetObject>
+                  <InArgument x:TypeArguments="sx:XmlNamespaceManager">[XmlSelectorsNamespaceManager]</InArgument>
+                </InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="x:String">x</InArgument>
+                <InArgument x:TypeArguments="x:String">http://schemas.microsoft.com/winfx/2006/xaml</InArgument>
+              </InvokeMethod>
+              <InvokeMethod DisplayName="Add UI namespace to manager - XmlSelectorsNamespaceManager" sap:VirtualizedContainerService.HintSize="388,136" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="AddNamespace">
+                <InvokeMethod.TargetObject>
+                  <InArgument x:TypeArguments="sx:XmlNamespaceManager">[XmlSelectorsNamespaceManager]</InArgument>
+                </InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="x:String">sap2010</InArgument>
+                <InArgument x:TypeArguments="x:String">http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation</InArgument>
+              </InvokeMethod>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Ustaw atrybut i zapisz plik." DisplayName="Update Attribute &amp; Save File" sap:VirtualizedContainerService.HintSize="449.6,79.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="strTargetDisplayName" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEach x:TypeArguments="sx:XmlNode" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pętla po Nodach: &quot;ui:LogMessage&quot;." DisplayName="For Each - ui:LogMessage" sap:VirtualizedContainerService.HintSize="416,88" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[XmlDiagramTree.DocumentElement.SelectNodes(&quot;//ui:LogMessage&quot;, XmlSelectorsNamespaceManager)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="sx:XmlNode">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="sx:XmlNode" Name="CurrentNode" />
+                    </ActivityAction.Argument>
+                    <Sequence sap2010:Annotation.AnnotationText="Ustaw wartość Noda." DisplayName="Set Node Value" sap:VirtualizedContainerService.HintSize="449.6,781.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Boolean" Name="boolDefaultNodeNotExists" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Assign - boolDefaultNodeNotExists" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[boolDefaultNodeNotExists]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <TryCatch sap2010:Annotation.AnnotationText="Próbuję zalogować wartość noda - &quot;DisplayName&quot;." DisplayName="Try Catch - CurrentNode.Attributes(&quot;DisplayName&quot;).Value" sap:VirtualizedContainerService.HintSize="416,88" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch.Try>
+                          <ui:LogMessage DisplayName="Log Message - 22" sap:VirtualizedContainerService.HintSize="449.6,110.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Before name change: &quot; + CurrentNode.Attributes(&quot;DisplayName&quot;).Value]" />
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="456,181" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <Sequence sap2010:Annotation.AnnotationText="Błąd." DisplayName="Error - CurrentNode.Attributes(&quot;DisplayName&quot;).Value" sap:VirtualizedContainerService.HintSize="449.6,411.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message - 23" sap:VirtualizedContainerService.HintSize="416,146.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[&quot;Before name change (Node sap2010): &quot; + CurrentNode.Attributes(&quot;sap2010:WorkflowViewState.IdRef&quot;).Value]" />
+                                <Assign DisplayName="Assign - boolDefaultNodeNotExists" sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Boolean">[boolDefaultNodeNotExists]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                        <TryCatch.Finally>
+                          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Sequence>
+                        </TryCatch.Finally>
+                      </TryCatch>
+                      <Assign DisplayName="Assign - strTargetDisplayName" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[strTargetDisplayName]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["Log Message - " + intLogMsgStartCounter.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <If sap2010:Annotation.AnnotationText="Jeżeli wartość Noda &quot;DisplayName&quot; nie istnieje." Condition="[boolDefaultNodeNotExists]" DisplayName="If - boolDefaultNodeNotExists" sap:VirtualizedContainerService.HintSize="416,88" sap2010:WorkflowViewState.IdRef="If_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,380" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign - CurrentNode.Attributes(&quot;sap2010:WorkflowViewState.IdRef&quot;).Value" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[CurrentNode.Attributes("sap2010:WorkflowViewState.IdRef").Value]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[strTargetDisplayName]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:LogMessage DisplayName="Log Message - 24" sap:VirtualizedContainerService.HintSize="416,137.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;After name change: &quot; + CurrentNode.Attributes(&quot;sap2010:WorkflowViewState.IdRef&quot;).Value]" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,380" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign - CurrentNode.Attributes(&quot;DisplayName&quot;).Value" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[CurrentNode.Attributes("DisplayName").Value]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[strTargetDisplayName]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:LogMessage DisplayName="Log Message - 25" sap:VirtualizedContainerService.HintSize="416,137.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;After name change: &quot; + CurrentNode.Attributes(&quot;DisplayName&quot;).Value]" />
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                      <Assign DisplayName="Assign - intStartCounter" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[intLogMsgStartCounter]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[intLogMsgStartCounter + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEach>
+              <InvokeMethod DisplayName="Invoke Method - XmlDiagramTree" sap:VirtualizedContainerService.HintSize="416,166.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_5" MethodName="Save">
+                <InvokeMethod.TargetObject>
+                  <InArgument x:TypeArguments="sx:XmlDocument">[XmlDiagramTree]</InArgument>
+                </InvokeMethod.TargetObject>
+                <InArgument x:TypeArguments="x:String">[CurrentXAML_File]</InArgument>
+              </InvokeMethod>
+              <ui:LogMessage DisplayName="Log Message - 26" sap:VirtualizedContainerService.HintSize="416,133.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;Saving file: &quot; + System.IO.Path.GetFileName(CurrentXAML_File)]" />
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEach>
+    <ui:LogMessage DisplayName="Log Message - 27" sap:VirtualizedContainerService.HintSize="518.4,133.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Stop - File XAML Modify&quot;]" />
+  </Sequence>
+</Activity>
